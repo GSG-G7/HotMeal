@@ -1,5 +1,9 @@
 # HotMeal
-# User journey
+## Solution
+
+Our app is designed to let the users order their meals, edit them as they desire without needing of calling waiters. Moreover, they can send their feedback through the app.
+
+## User journey
 - User has to  enter table number and secret number then click enter 
 - The order page will appear to let the user 
 choose or make his own meal from the menu
