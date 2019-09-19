@@ -2,7 +2,6 @@
 
 ## **_Feel Your Meal_**
 
-[Figma-Link](https://www.figma.com/proto/wNnEm89q827FnGPdOaJKK8/HotMeal?node-id=0%3A1&scaling=min-zoom)
 [View Prototype](https://www.figma.com/proto/wNnEm89q827FnGPdOaJKK8/HotMeal?node-id=7%3A1&scaling=scale-down)
 
 ## The proplem statement:
