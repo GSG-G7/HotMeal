@@ -43,3 +43,9 @@ Our app is designed to let the users order their meals, edit them as they desire
 - As a user I can show my order, edit it or cancel it.
 - As a user I can call the waiter to get my order instesd of making it online.
 - As a user I can send my feedback.
+
+## Prototype
+
+See our design on Figma:
+
+https://www.figma.com/file/wNnEm89q827FnGPdOaJKK8/HotMeal?node-id=189%3A186
