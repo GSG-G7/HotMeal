@@ -4,9 +4,11 @@
   "description": "## **_Feel Your Meal_**",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/",
+    "test": "tape test/ | tap-spec",
     "lint:react": "cd client/ && npm run lint",
-    "lint": "eslint server/"
+    "lint": "eslint server/",
+    "start": "node server/",
+    "dev": "nodemon server/"
   },
   "repository": {
     "type": "git",
@@ -36,5 +38,9 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.12.1"
   },
-  "pre-commit": ["test", "lint", "lint:react"]
+  "pre-commit": [
+    "test",
+    "lint",
+    "lint:react"
+  ]
 }
