@@ -4,11 +4,11 @@
   "description": "## **_Feel Your Meal_**",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/ | tap-spec",
+    "test": "NODE_ENV=test tape test/ | tap-spec",
     "lint:react": "cd client/ && npm run lint",
     "lint": "eslint server/",
-    "start": "node server/",
-    "dev": "nodemon server/"
+    "start": "NODE_ENV=dev node server/",
+    "dev": "NODE_ENV=dev nodemon server/"
   },
   "repository": {
     "type": "git",
