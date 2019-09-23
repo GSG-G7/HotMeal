@@ -16,7 +16,7 @@ CREATE TABLE meal
 (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) UNIQUE,
-    category_id INTEGER REFERENCES menu_category(id),
+    category_id INTEGER REFERENCES menu_category(id) ON DELETE CASCADE,
     short_desc TEXT ,
     description TEXT ,
     img TEXT,
