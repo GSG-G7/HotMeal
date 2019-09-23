@@ -1,6 +1,9 @@
-const tape = require('tape');
+const test = require('tape');
+const { loginQuery } = require('../server/database/querys/login');
 
-tape('Testing tape', (t) => {
-  t.equal(1, 1, 'Pass');
-  t.end();
+module.exports = test('init', (t) => {
+  t.deepEquals(1, 1, 'how');
 });
+
+// require('./login.test');
+// require('./loginDb.test');

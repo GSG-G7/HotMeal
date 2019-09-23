@@ -1,19 +1,18 @@
-const tape = require('tape');
+const test = require('tape');
 const supertest = require('supertest');
 const app = require('../server/app');
 
-tape('Testing tape', (t) => {
+module.exports = test('Testing tape', (t) => {
   supertest(app)
     .post('/login')
-    .send({ secretNumber: 'h54f', tableNumber: 123 })
+    .send({ secret: 'h54f', tableNumber: 123 })
     .expect('Content-Type', /json/)
     .expect(200)
     .end((err, res) => {
       if (err) t.error(err);
       else {
-        t.end();
         t.deepEquals(res, { statusCode: 200 });
       }
+      t.end();
     });
-  t.end();
 });

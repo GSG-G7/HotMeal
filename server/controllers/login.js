@@ -1,11 +1,10 @@
-const joi = require('@hapi/joi');
 const { loginSchema } = require('../validation/login');
-const { loginQuery } = require('../database/query/login');
+const { loginQuery } = require('../database/querys/login');
 
 exports.login = (req, res) => {
-  loginSchema.validate(req.body);
+  const { error } = loginSchema.validate(req.body);
 
-  if (err) {
+  if (error) {
     res.status(401).send({ statusCode: 401 });
   } else {
     loginQuery(req.body)
