@@ -12,4 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
+app.use('/api/v1', router);
+// eslint-disable-next-line no-unused-vars
+app.use((error, req, res, next) => {
+  res.status(500).send({ code: 500, error: 'Internal Server Error' });
+});
+
 module.exports = app;

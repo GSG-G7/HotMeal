@@ -16,7 +16,7 @@ CREATE TABLE meal
 (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) UNIQUE,
-    category_id INTEGER REFERENCES menu_category(id),
+    category_id INTEGER REFERENCES menu_category(id) ON DELETE CASCADE,
     short_desc TEXT ,
     description TEXT ,
     img TEXT,
@@ -32,19 +32,23 @@ CREATE TABLE user_order
 );
 CREATE TABLE order_meal
 (
-    order_id INTEGER  REFERENCES user_order(id) NOT NULL,
-    meal_id INTEGER REFERENCES meal(id) NOT NULL,
+    order_id INTEGER  REFERENCES user_order(id) on DELETE CASCADE NOT NULL,
+    meal_id INTEGER REFERENCES meal(id) on DELETE CASCADE NOT NULL,
     PRIMARY KEY (order_id, meal_id),
+    vegetables VARCHAR(255)[],
+    fruits VARCHAR(255)[],
+    nuts VARCHAR(255)[],
+    sauce INTEGER,
     salt INTEGER,
-    spices VARCHAR(255),
-    vegetables VARCHAR(255),
+    spices INTEGER,
+    sugar integer,
     amount INTEGER,
     price FLOAT
 );
 CREATE TABLE feedback
 (
     id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES user_order(id),
+    order_id INTEGER REFERENCES user_order(id) on DELETE CASCADE,
     email VARCHAR(255),
     feedback TEXT
 );
