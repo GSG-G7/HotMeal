@@ -52,4 +52,5 @@ CREATE TABLE feedback
     email VARCHAR(255),
     feedback TEXT
 );
+insert into table_info (secret) values ('sha12345'), ('sha123456'), ('sha123457');
 COMMIT;

@@ -3,7 +3,7 @@ const { readFileSync } = require('fs');
 
 const connection = require('./connection');
 
-exports.dbBuild = () => {
+module.exports = () => {
   const filePath = join(__dirname, 'build.sql');
   const sql = readFileSync(filePath).toString();
   return connection.query(sql);
