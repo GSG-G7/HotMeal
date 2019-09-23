@@ -1,14 +1,15 @@
 const joi = require('@hapi/joi');
-const { loginSc } = require('./schema/login');
-const { loginQ } = require('../database/query/login');
+const { loginSchema } = require('./schema/login');
+const { loginQuery } = require('../database/query/login');
 
 exports.login = (req, res) => {
-  joi.validate(req.body, loginSc, (err) => {
+  joi.validate(req.body, loginSchema, (err) => {
     if (err) {
       res.send({ statusCode: 401 });
     } else {
-      loginQ(req.body)
-        .then(() => res.send({ statusCode: 200 }));
+      loginQuery(req.body)
+        .then(() => res.send({ statusCode: 200 }))
+        .catch(() => res.send({ statusCode: 401 }));
     }
   });
 };
