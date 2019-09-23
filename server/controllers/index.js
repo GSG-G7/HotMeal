@@ -1,5 +1,5 @@
 const express = require('express');
-const { PostFeedback } = require('./postFeedback');
+const PostFeedback = require('./postFeedback');
 
 const router = express.Router();
 
