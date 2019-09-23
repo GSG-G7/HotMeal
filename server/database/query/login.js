@@ -1,0 +1,1 @@
+exports.loginQ = (data) => data;
