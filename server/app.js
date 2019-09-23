@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const router = require('./controllers');
 
 const app = express();
 
@@ -9,5 +10,11 @@ app.set('port', port);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/api/v1', router);
+// eslint-disable-next-line no-unused-vars
+app.use((error, req, res, next) => {
+  res.status(500).send({ code: 500, error: 'Internal Server Error' });
+});
 
 module.exports = app;
