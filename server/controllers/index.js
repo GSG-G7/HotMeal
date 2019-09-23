@@ -1,9 +1,9 @@
 const express = require('express');
-const PostFeedback = require('./postFeedback');
+const postFeedback = require('./postFeedback');
 
 const router = express.Router();
 
-router.post('/postfeedback', PostFeedback);
+router.post('/postfeedback', postFeedback);
 
 router.use((req, res) => {
   res.status(400).send('Client Error');

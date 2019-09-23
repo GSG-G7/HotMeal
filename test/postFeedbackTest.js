@@ -1,15 +1,26 @@
 const tape = require('tape');
+const supertest = require('supertest');
 
-const build = require('../server/database/config/build');
-const postFeedback = require('../server/database/queries/postFeedback');
+const app = require('../server/app');
 
-tape('testing post feedback route', (t) => {
-  const expected = 'alaayasin.ps@gmail.com';
-  build()
-    .then(() => postFeedback())
-    .then((res) => t.deepEqual(res.email, expected, 'must be the same'))
-    .then(() => t.end())
-    .catch();
+tape('initial test for tape', (t) => {
+  t.ok(true);
+  t.end();
 });
+// tape('testing post feedback route', (t) => {
+//   supertest(app)
+//     .post('/api/v1/postfeedback')
+//     .expect(200)
+//     .expect('content-type', /json/)
+//     .end((err, res) => {
+//       if (err) {
+//         t.error(err);
+//         t.end();
+//       } else {
+//         console.log(res.message);
 
-tape.onFinish(() => process.exit(0));
+//         t.ok(res.message, 'Your feedback has sent!', 'both should be the same');
+//         t.end();
+//       }
+//     });
+// });
