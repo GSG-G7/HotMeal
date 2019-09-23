@@ -36,4 +36,3 @@ exports.feildLogin = test('Testing /login fail auth', (t) => {
       t.end();
     });
 });
-test.onFinish(() => process.exit(0));
