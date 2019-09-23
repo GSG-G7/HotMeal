@@ -3,9 +3,9 @@ const supertest = require('supertest');
 const app = require('../server/app');
 const reBuild = require('../server/database/config/build');
 
-reBuild();
 
 exports.successLogin = test('Testing /login success', (t) => {
+  reBuild();
   supertest(app)
     .post('/api/v1/login')
     .send({ secret: 'sha12345', tableNumber: '1' })
@@ -35,3 +35,4 @@ exports.feildLogin = test('Testing /login fail auth', (t) => {
       t.end();
     });
 });
+test.onFinish(() => process.exit(0));
