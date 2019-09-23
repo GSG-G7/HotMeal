@@ -1,6 +1,6 @@
 const joi = require('@hapi/joi');
 
-exports.loginSchema = joi.opject().keys({
+module.export = joi.object().keys({
   secretText: joi.string()
     .invalid('<', '>')
     .required(),
