@@ -1,15 +1,13 @@
-const Joi = require('@hapi/joi');
 const postFeedback = require('../database/config/connection');
 const feedbackSchema = require('../validation/feedback');
 
 const PostFeedback = (req, res, next) => {
-  Joi.validate(req.body, feedbackSchema, (err) => {
+  feedbackSchema.validate(req.body, (err) => {
     if (err) {
-      // eslint-disable-next-line no-console
-      console.log(err); // it is gonna be changed later
+      res.send('fill all the fields');
     } else {
       postFeedback(req.body)
-        .then(res.send({ code: 200 }))
+        .then(res.send('Your feedback has sent!'))
         .catch((error) => next(error));
     }
   });
