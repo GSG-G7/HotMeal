@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 
-exports.postFeedback = (data) => {
+const postFeedback = (data) => {
   const { orderID, email, feedback } = data;
   const sql = {
     text: 'INSERT INTO feedback (orderID, email, feedback) values ($1, $2, $3)',
@@ -8,3 +8,4 @@ exports.postFeedback = (data) => {
   };
   return connection.query(sql);
 };
+module.exports = postFeedback;

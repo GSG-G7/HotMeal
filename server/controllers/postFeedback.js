@@ -1,9 +1,9 @@
 const Joi = require('@hapi/joi');
-const { postFeedback } = require('../database/config/connection');
-const { schema } = require('../validation/feedback');
+const postFeedback = require('../database/config/connection');
+const feedbackSchema = require('../validation/feedback');
 
-exports.PostFeedback = (req, res, next) => {
-  Joi.validate(req.body, schema, (err) => {
+const PostFeedback = (req, res, next) => {
+  Joi.validate(req.body, feedbackSchema, (err) => {
     if (err) {
       // eslint-disable-next-line no-console
       console.log(err); // it is gonna be changed later
@@ -14,3 +14,4 @@ exports.PostFeedback = (req, res, next) => {
     }
   });
 };
+module.exports = PostFeedback;
