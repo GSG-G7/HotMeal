@@ -32,11 +32,11 @@ CREATE TABLE user_order
 );
 CREATE TABLE order_meal
 (
-    order_id INTEGER  REFERENCES user_order(id) NOT NULL,
-    meal_id INTEGER REFERENCES meal(id) NOT NULL,
+    order_id INTEGER  REFERENCES user_order(id) on DELETE CASCADE NOT NULL,
+    meal_id INTEGER REFERENCES meal(id) on DELETE CASCADE NOT NULL,
     PRIMARY KEY (order_id, meal_id),
     salt INTEGER,
-    spices VARCHAR(255),
+    spices INTEGER,
     vegetables VARCHAR(255),
     amount INTEGER,
     price FLOAT
@@ -44,7 +44,7 @@ CREATE TABLE order_meal
 CREATE TABLE feedback
 (
     id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES user_order(id),
+    order_id INTEGER REFERENCES user_order(id) on DELETE CASCADE,
     email VARCHAR(255),
     feedback TEXT
 );
