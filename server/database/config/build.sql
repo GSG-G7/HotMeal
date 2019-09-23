@@ -21,21 +21,21 @@ CREATE TABLE meal
     description TEXT ,
     img TEXT,
     price FLOAT,
-    ingrediants VARCHAR(255)
+    ingredients VARCHAR(255)[]
 );
 CREATE TABLE user_order
 (
     id  SERIAL PRIMARY KEY,
-    create_at   DATE,
+    create_at   TIMESTAMP,
     total_price FLOAT,
-    total_no  INTEGER
+    table_no  INTEGER REFERENCES table_info(number) on DELETE CASCADE
 );
 CREATE TABLE order_meal
 (
     order_id INTEGER  REFERENCES user_order(id) NOT NULL,
     meal_id INTEGER REFERENCES meal(id) NOT NULL,
     PRIMARY KEY (order_id, meal_id),
-    salt VARCHAR(255),
+    salt INTEGER,
     spices VARCHAR(255),
     vegetables VARCHAR(255),
     amount INTEGER,
