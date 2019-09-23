@@ -35,9 +35,13 @@ CREATE TABLE order_meal
     order_id INTEGER  REFERENCES user_order(id) on DELETE CASCADE NOT NULL,
     meal_id INTEGER REFERENCES meal(id) on DELETE CASCADE NOT NULL,
     PRIMARY KEY (order_id, meal_id),
+    vegetables VARCHAR(255)[],
+    Fruits VARCHAR(255)[],
+    Nuts VARCHAR(255)[],
+    Sauce INTEGER,
     salt INTEGER,
     spices INTEGER,
-    vegetables VARCHAR(255),
+    Sugar integer,
     amount INTEGER,
     price FLOAT
 );
