@@ -20,7 +20,7 @@ module.exports = test('Testing for getMeals route', (t) => {
         200,
         'The code value must be 200 in the response body',
       );
-      res.body.data.map((ele) => t.equal(ele.category_id, 1, 'All category ids must be 1'),);
+      res.body.data.forEach((ele) => t.equal(ele.category_id, 1, 'All category ids must be 1'),);
       t.end();
     });
 });
