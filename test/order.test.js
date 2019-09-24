@@ -11,7 +11,7 @@ tape('test success for /order', (t) => {
       totalPrice: 44.05,
       tableNumber: 1,
       meals: [{
-        mealId: 2, amount: 1, price: 4.02, salt: 0, spicies: 0, vegetables: ['t', 'b'],
+        mealId: 2, amount: 1, price: 4.02, salt: 1, spices: 0, vegetables: ['t', 'b'],
       }],
     })
     .expect(200)
