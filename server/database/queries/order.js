@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 
 module.exports = (createdAt, totalPrice, tableNumber) => connection.query({
-  text: 'INSERT INTO user_order (create_at, total_price, table_no) VALUES ($1, $2, $3) RETURNING *;',
+  text: 'INSERT INTO user_order (create_at, total_price, table_no) VALUES ($1, $2, $3) RETURNING id;',
   values: [createdAt, totalPrice, tableNumber],
 });
