@@ -1,9 +1,8 @@
 const connection = require('../../database/config/connection');
 
-const getMealsByCat = (categoryName) => {
-  connection.query(
-    'Select * from menue_category inner join meal on (menue_category.id = meal.category_id) where menue_category.name=$1',
+const getMealsByCat = (categoryName) => connection.query(
+    'Select * from menu_category c inner join meal m on (c.id = m.category_id) where c.name=$1',
     [categoryName],
   );
-};
+
 module.exports = getMealsByCat;
