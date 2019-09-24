@@ -5,7 +5,6 @@ module.exports = Joi.object().keys({
   totalPrice: Joi.number().required(),
   tableNumber: Joi.number().required(),
   meals: Joi.array().items(Joi.object().keys({
-    // mealId, vegetables, fruits, nuts, sauce, salt, spices, sugar, amount, price
     mealId: Joi.number().required(),
     vegetables: Joi.array().items(Joi.string()),
     fruits: Joi.array().items(Joi.string()),
