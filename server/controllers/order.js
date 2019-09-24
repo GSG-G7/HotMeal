@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const addOrder = require('../database/queries/order');
 const addMeal = require('../database/queries/orderMeal');
 
@@ -14,6 +15,8 @@ module.exports = (req, res, next) => {
       res.send({ statusCode: 200 });
     })
     .catch((error) => {
+      console.log(error);
+
       next(error);
     });
 };

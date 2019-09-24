@@ -2,10 +2,6 @@ const tape = require('tape');
 const supertest = require('supertest');
 const app = require('../server/app.js');
 
-tape('Testing tape', (t) => {
-  t.equal(1, 1, 'Pass');
-  t.end();
-});
 tape('test success for /order', (t) => {
   supertest(app)
     .post('/api/v1/order')
