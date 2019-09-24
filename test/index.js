@@ -1,1 +1,2 @@
-require('./orderTest');
+require('./order.test');
+require('./feedback.test');
