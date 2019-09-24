@@ -12,11 +12,11 @@ module.exports = test('Testing for getMeals route', (t) => {
       t.error(err);
       t.deepEqual(
         Object.keys(res.body),
-        ['code', 'data'],
+        ['statusCode', 'data'],
         'The keys must be the same',
       );
       t.equal(
-        res.body.code,
+        res.body.statusCode,
         200,
         'The code value must be 200 in the response body',
       );
@@ -35,7 +35,7 @@ module.exports = test('Testing for getMeals route', (t) => {
       t.error(err);
       t.deepEqual(
         res.body,
-        { code: 400, error: 'No such category' },
+        { statusCode: 400, error: 'No such category' },
         'The code value must be 200 in the response body',
       );
       t.end();

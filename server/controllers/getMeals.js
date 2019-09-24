@@ -5,9 +5,9 @@ const getMeals = (req, res, next) => {
   if (category) category = category.toLowerCase();
   getMealsByCat(category)
     .then((result) => (result.rows.length
-      ? res.status(200).send({ code: 200, data: result.rows })
+      ? res.status(200).send({ statusCode: 200, data: result.rows })
       : res.status(400).send({
-        code: 400,
+        statusCode: 400,
         error: 'No such category'
       })),)
     .catch((err) => next(err));
