@@ -6,5 +6,13 @@ module.exports = (req, res, next) => {
     .then(() => loginQuery(req.body))
     .then((tables) => (tables.rows[0] ? res.status(200).send({ statusCode: 200 })
       : res.status(401).send({ statusCode: 401 })))
-    .catch((err) => next(err));
+    .catch((err) => {
+      if (err.details) {
+        if (err.details[0].message) {
+          res.status(400).send({ statusCode: 400, message: err.details[0].message });
+        }
+      } else {
+        next(err);
+      }
+    });
 };
