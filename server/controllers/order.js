@@ -1,7 +1,7 @@
-const { addOrder } = require('../database/queries/order');
-const { addMeal } = require('../database/queries/orderMeal');
+const addOrder = require('../database/queries/order');
+const addMeal = require('../database/queries/orderMeal');
 
-exports.addOrder = (req, res, next) => {
+module.exports = (req, res, next) => {
   const {
     createdAt, totalPrice, tableNumber, meals,
   } = req.body;

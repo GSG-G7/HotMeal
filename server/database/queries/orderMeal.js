@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 
-exports.addMeal = (orderId, data) => {
+module.exports = (orderId, data) => {
   const {
     mealId, vegetables, fruits, nuts, sauce, salt, spices, sugar, amount, price,
   } = data;
