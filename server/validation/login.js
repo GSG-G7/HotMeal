@@ -5,6 +5,5 @@ module.exports = joi.object().keys({
     .invalid('<', '>')
     .required(),
   tableNumber: joi.number()
-    .invalid('<', '>')
     .required(),
 });

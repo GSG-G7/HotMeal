@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { login } = require('./login');
+const login = require('./login');
 
 const router = express.Router();
 
