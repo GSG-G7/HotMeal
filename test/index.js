@@ -1,1 +1,1 @@
-require('./postFeedbackTest');
+require('./feedback.test');
