@@ -8,13 +8,13 @@ tape('testing post feedback route', (t) => {
     .post('/api/v1/post-feedback')
     .send({ orderId: 2, email: 'alaa@gmail.com', feedback: 'Every thing is good' })
     .expect('Content-Type', /json/)
-    .expect(200)
+    .expect(201)
     .end((err, res) => {
       if (err) {
         t.error(err);
         t.end();
       } else {
-        t.deepEqual(res.body, { statusCode: 200, message: 'Your feedback has sent!' }, 'should be the same');
+        t.deepEqual(res.body, { statusCode: 201, message: 'Your feedback has sent!' }, 'should be the same');
         t.end();
       }
     });
