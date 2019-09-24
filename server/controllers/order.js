@@ -9,14 +9,11 @@ module.exports = (req, res, next) => {
   addOrder(createdAt, totalPrice, tableNumber)
     .then((order) => {
       const orderId = order.rows[0].id;
-      meals.forEach((meal) => {
-        addMeal(orderId, meal)
-          .then(() => {
-            res.send({ statusCode: 200 });
-          })
-          .catch((err) => { next(err); });
-      });
-    }).catch((error) => {
+      return Promise.all(meals.map((meal) => addMeal(orderId, meal)));
+    }).then(() => {
+      res.send({ statusCode: 200 });
+    })
+    .catch((error) => {
       next(error);
     });
 };
