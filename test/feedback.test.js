@@ -19,3 +19,4 @@ tape('testing post feedback route', (t) => {
       }
     });
 });
+tape.onFinish(() => process.exit(0));
