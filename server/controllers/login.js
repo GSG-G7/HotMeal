@@ -21,6 +21,9 @@ module.exports = (req, res, next) => {
           res.status(400).send({ statusCode: 400, error: err.details[0].message });
         }
       } else {
+        // eslint-disable-next-line no-console
+        console.log(err);
+
         next(err);
       }
     });

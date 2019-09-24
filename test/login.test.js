@@ -10,12 +10,6 @@ test('Testing /login success', (t) => {
     .expect('Content-Type', /json/)
     .expect(200)
     .end((err, res) => {
-      // eslint-disable-next-line no-console
-      console.log(err);
-      // eslint-disable-next-line no-console
-      console.log(res.body);
-
-
       if (err) t.error(err);
       else {
         t.deepEquals(res.body, { statusCode: 200 }, 'should route login with true data have status code 200');
