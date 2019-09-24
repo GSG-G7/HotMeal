@@ -8,7 +8,9 @@
     "lint:react": "cd client/ && npm run lint",
     "lint": "eslint server/",
     "start": "NODE_ENV=dev node server/",
-    "dev": "NODE_ENV=dev nodemon server/"
+    "dev": "NODE_ENV=dev nodemon server/",
+    "build:db": "NODE_ENV=test node server/database/config/build",
+    "build:static": "NODE_ENV=test node server/database/config/insertStatic"
   },
   "repository": {
     "type": "git",
