@@ -8,8 +8,8 @@ const getMeals = (req, res, next) => {
       ? res.status(200).send({ statusCode: 200, data: result.rows })
       : res.status(400).send({
         statusCode: 400,
-        error: 'No such category'
-      })),)
+        error: 'No such category',
+      })))
     .catch((err) => next(err));
 };
 
