@@ -15,8 +15,6 @@ module.exports = (req, res, next) => {
       res.send({ statusCode: 200 });
     })
     .catch((error) => {
-      console.log(error);
-
       next(error);
     });
 };
