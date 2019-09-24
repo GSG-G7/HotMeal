@@ -9,9 +9,9 @@ switch (process.env.NODE_ENV) {
   case 'test':
     dbURL = process.env.DB_TEST_URL;
     break;
-  default: throw new Error('No Database URL!!!');
+  default:
+    throw new Error('No Database URL!!!');
 }
-
 
 const options = {
   connectionString: dbURL,
