@@ -27,7 +27,7 @@ test('Testing /login fail auth', (t) => {
     .end((err, res) => {
       if (err) t.error(err);
       else {
-        t.deepEquals(res.body, { statusCode: 401, error: 'login false' }, 'should route login with error have status code 401');
+        t.deepEquals(res.body, { statusCode: 401, error: 'The credintials you entered are not valid' }, 'should route login with error have status code 401');
       }
       t.end();
     });
