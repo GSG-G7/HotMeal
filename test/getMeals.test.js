@@ -21,6 +21,7 @@ module.exports = test('Testing for getMeals route', (t) => {
         'The code value must be 200 in the response body',
       );
       res.body.data.forEach((ele) => t.equal(ele.category_id, 1, 'All category ids must be 1'),);
+      res.body.data.forEach((ele) => t.equal(ele.category, 'main', 'All category names must be main'),);
       t.end();
     });
 });
