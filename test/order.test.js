@@ -7,7 +7,7 @@ tape('test success for /order', (t) => {
     .post('/api/v1/order')
     .send({
 
-      createdAt: '15/01/2018',
+      createdAt: '2008-01-01 00:00:01',
       totalPrice: 44.05,
       tableNumber: 1,
       meals: [{
