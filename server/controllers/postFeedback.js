@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
     .catch((err) => {
       if (err.details) {
         if (err.details[0].message) {
-          res.status(401).send({ statusCode: 401, message: err.details[0].message });
+          res.status(400).send({ statusCode: 400, message: err.details[0].message });
         }
       } else {
         next(err);
