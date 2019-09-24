@@ -35,7 +35,7 @@ module.exports = test('Testing for getMeals route', (t) => {
       t.error(err);
       t.deepEqual(
         res.body,
-        { code: 400, error: 'Bad Request: there is no such category' },
+        { code: 400, error: 'No such category' },
         'The code value must be 200 in the response body',
       );
       t.end();
