@@ -6,6 +6,7 @@ services:
 before_script:
   - psql -c "CREATE DATABASE hotmeal;" -U postgres
   - psql -c "CREATE USER hotmealuser WITH PASSWORD '1';" -U postgres  
+  - "npm run build:db && npm run build:static" 
 env: 
   global: 
   - PGPORT=5432
