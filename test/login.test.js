@@ -12,7 +12,7 @@ test('Testing /login success', (t) => {
     .end((err, res) => {
       if (err) t.error(err);
       else {
-        t.deepEquals(res.body, { statusCode: 200 }, 'should route login with true data have status code 200');
+        t.deepEquals(res.body.statusCode, 200, 'should route login with true data have status code 200');
       }
       t.end();
     });

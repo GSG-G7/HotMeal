@@ -8,9 +8,9 @@ module.exports = (req, res, next) => {
     .then(loginQuery)
     .then((tables) => {
       if (tables.rows[0]) {
-        const token = jwt.sign({ tableNumber: tables.rows[0].tableNumber }, process.env.PRIVATEKEY);
+        const token = jwt.sign({ tableNumber: tables.rows[0].number }, process.env.PRIVATEKEY);
         res.cookie('hotmeal_token', token);
-        res.send({ statusCode: 200 });
+        res.send({ statusCode: 200, data: { tableNumber: tables.rows[0].number } });
       } else {
         res.status(401).send({ statusCode: 401, error: 'The credintials you entered are not valid' });
       }
