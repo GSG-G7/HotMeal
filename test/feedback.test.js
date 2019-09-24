@@ -5,7 +5,7 @@ const app = require('../server/app');
 
 tape('testing post feedback route', (t) => {
   supertest(app)
-    .post('/api/v1/postfeedback')
+    .post('/api/v1/post-feedback')
     .send({ orderId: 2, email: 'alaa@gmail.com', feedback: 'Every thing is good' })
     .expect('Content-Type', /json/)
     .expect(200)
