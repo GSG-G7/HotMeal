@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-  res.cleerCookie('HotmealToken').send({ statusCode: 200 });
+  res.clearCookie('hotmeal_token').send({ statusCode: 200 });
 };

@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const router = require('./controllers');
+require('env2')('config.env');
 
 const app = express();
 
