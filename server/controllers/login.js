@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     .then(loginQuery)
     .then((tables) => {
       if (tables.rows[0]) {
-        const token = jwt.sign(tables.rows[0].tableNumber, process.env.PRIVATEKEY);
+        const token = jwt.sign({ tableNumber: tables.rows[0].tableNumber }, process.env.PRIVATEKEY);
         res.cookie('hotmeal_token', token);
         res.send({ statusCode: 200 });
       } else {
