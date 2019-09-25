@@ -45,3 +45,5 @@ test('Testing for getMeals route', (t) => {
       t.end();
     });
 });
+
+test.onFinish(() => process.exit(0));
