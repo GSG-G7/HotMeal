@@ -2,7 +2,8 @@ const supertest = require('supertest');
 const test = require('tape');
 const app = require('../server/app');
 
-module.exports = test('Testing for getMeals route', (t) => {
+
+test('Testing for getMeals route', (t) => {
   supertest(app)
     .get('/api/v1/meals')
     .query({ category: 'main' })
@@ -26,7 +27,7 @@ module.exports = test('Testing for getMeals route', (t) => {
     });
 });
 
-module.exports = test('Testing for getMeals route', (t) => {
+test('Testing for getMeals route', (t) => {
   supertest(app)
     .get('/api/v1/meals')
     .query({ category: 'blabla' })
@@ -42,5 +43,3 @@ module.exports = test('Testing for getMeals route', (t) => {
       t.end();
     });
 });
-
-test.onFinish(() => process.exit(0));
