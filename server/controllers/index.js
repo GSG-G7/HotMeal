@@ -7,7 +7,7 @@ const logout = require('./logout');
 const router = express.Router();
 
 router.post('/login', login);
-router.use(auth); // why
+router.use(auth);
 router.post('/post-feedback', postFeedback);
 router.get('/logout', logout);
 module.exports = router;
