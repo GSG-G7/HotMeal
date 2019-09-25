@@ -1,6 +1,11 @@
 const connection = require('../config/connection');
 
-module.exports = (orderId, data) => {
+exports.insertOrder = (createdAt, totalPrice, tableNumber) => connection.query({
+  text: 'INSERT INTO user_order (create_at, total_price, table_no) VALUES ($1, $2, $3) RETURNING id;',
+  values: [createdAt, totalPrice, tableNumber],
+});
+
+exports.insertOrderMeals = (orderId, data) => {
   const {
     mealId, vegetables, fruits, nuts, sauce, salt, spices, sugar, amount, price,
   } = data;

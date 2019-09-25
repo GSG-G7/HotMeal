@@ -1,27 +1,35 @@
-const addOrder = require('../database/queries/orderQuery');
-const addMeal = require('../database/queries/orderMeal');
+const { insertOrder, insertOrderMeals } = require('../database/queries/order');
 const orderSchema = require('../validation/orderSchema');
 
 module.exports = (req, res, next) => {
   let allMeals;
-  req.body.tableNumber = req.user.tableNumber;
   orderSchema
-    .validateAsync(req.body)
+    .validateAsync({
+      ...req.body, tableNumber: req.user.tableNumber,
+    })
     .then((data) => {
       const {
         createdAt, totalPrice, meals,
       } = data;
       allMeals = meals;
-      return addOrder(createdAt, totalPrice, req.user.tableNumber);
+      return insertOrder(createdAt, totalPrice, req.user.tableNumber);
     })
     .then((order) => {
       const { rows } = order;
       const orderId = rows[0].id;
-      return Promise.all(allMeals.map((meal) => addMeal(orderId, meal)));
+      return Promise.all(allMeals.map((meal) => insertOrderMeals(orderId, meal)));
     }).then(() => {
-      res.send({ statusCode: 201 });
+      res.status(201).send({ statusCode: 201, message: 'Insertion order success' });
     })
     .catch((error) => {
-      next(error);
+      if (error.code === '23503') {
+        res.status(422).send({ statusCode: 422, error: error.detail });
+      } else if (error.details) {
+        if (error.details[0].message) {
+          res.status(400).send({ statusCode: 400, error: error.details[0].message });
+        }
+      } else {
+        next(error);
+      }
     });
 };
