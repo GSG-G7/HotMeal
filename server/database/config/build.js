@@ -1,6 +1,5 @@
 const { join } = require('path');
 const { readFileSync } = require('fs');
-
 const connection = require('./connection');
 
 const filePath = join(__dirname, 'build.sql');
