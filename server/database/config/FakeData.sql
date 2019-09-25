@@ -1,5 +1,5 @@
 insert into table_info (secret) values ('sha12345'), ('sha123456'), ('sha123457');
-insert into menu_category (name) values ('Main'),('Drinks'),('Breakfast'),('Sandwishes'),('Desserts');
+insert into menu_category (name) values ('main'),('drinks'),('breakfast'),('sandwishes'),('desserts');
 insert into meal (name, category_id, short_desc, description, img, price, ingredients) 
 values ('Checken pizza', 1 , 'Lorem ipsum dolor sit amet, consectetuer adipis.', 
 'Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
