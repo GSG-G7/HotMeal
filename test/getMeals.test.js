@@ -6,6 +6,7 @@ const app = require('../server/app');
 test('Testing for getMeals route', (t) => {
   supertest(app)
     .get('/api/v1/meals')
+    .set('Cookie', ['hotmeal_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZU51bWJlciI6MSwiaWF0IjoxNTY5Mzk2ODEyfQ.-Rb_346P1wnl0VHCmmf7zGXaBrfwMlxktFNUEt4l_kk'])
     .query({ category: 'main' })
     .expect(200)
     .expect('Content-Type', /json/)
@@ -30,6 +31,7 @@ test('Testing for getMeals route', (t) => {
 test('Testing for getMeals route', (t) => {
   supertest(app)
     .get('/api/v1/meals')
+    .set('Cookie', ['hotmeal_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZU51bWJlciI6MSwiaWF0IjoxNTY5Mzk2ODEyfQ.-Rb_346P1wnl0VHCmmf7zGXaBrfwMlxktFNUEt4l_kk'])
     .query({ category: 'blabla' })
     .expect(400)
     .expect('Content-Type', /json/)
@@ -43,3 +45,5 @@ test('Testing for getMeals route', (t) => {
       t.end();
     });
 });
+
+test.onFinish(() => process.exit(0));

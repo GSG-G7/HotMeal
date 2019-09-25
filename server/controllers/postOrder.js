@@ -4,14 +4,15 @@ const orderSchema = require('../validation/orderSchema');
 
 module.exports = (req, res, next) => {
   let allMeals;
+  req.body.tableNumber = req.user.tableNumber;
   orderSchema
     .validateAsync(req.body)
     .then((data) => {
       const {
-        createdAt, totalPrice, tableNumber, meals,
+        createdAt, totalPrice, meals,
       } = data;
       allMeals = meals;
-      return addOrder(createdAt, totalPrice, tableNumber);
+      return addOrder(createdAt, totalPrice, req.user.tableNumber);
     })
     .then((order) => {
       const { rows } = order;
