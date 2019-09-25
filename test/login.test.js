@@ -14,10 +14,7 @@ test('Testing /login success', (t) => {
       else {
         t.deepEquals(res.body, { statusCode: 200, data: { tableNumber: 1 } }, 'should route login with true data have status code 200');
       }
-      t.end();
     });
-});
-test('Testing /login route fail auth', (t) => {
   supertest(app)
     .post('/api/v1/login')
     .send({ secret: 'wrong data', tableNumber: '1' })
@@ -29,8 +26,9 @@ test('Testing /login route fail auth', (t) => {
       else {
         t.deepEquals(res.body, { statusCode: 401, error: 'The credintials you entered are not valid' }, 'should route login with error have status code 401');
       }
-      t.end();
     });
+  t.end();
 });
+
 
 test.onFinish(() => process.exit(0));

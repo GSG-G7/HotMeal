@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-// eslint-disable-next-line max-len
 module.exports = (req, res, next) => {
   jwt.verify(req.cookies.hotmeal_token, process.env.PRIVATEKEY, (err, token) => {
     if (err) {
