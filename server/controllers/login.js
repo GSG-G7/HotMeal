@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const loginSchema = require('../validation/login');
-const loginQuery = require('../database/querys/login');
+const loginQuery = require('../database/queries/login');
 require('env2')('config.env');
 
 module.exports = (req, res, next) => {

@@ -17,10 +17,10 @@ test('Testing /login success', (t) => {
       t.end();
     });
 });
-test('Testing /login fail auth', (t) => {
+test('Testing /login route fail auth', (t) => {
   supertest(app)
     .post('/api/v1/login')
-    .send({ secret: 'sh23dd4s5', tableNumber: '1' })
+    .send({ secret: 'wrong data', tableNumber: '1' })
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
     .expect(401)
