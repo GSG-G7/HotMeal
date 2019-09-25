@@ -1,4 +1,11 @@
 import React from 'react';
+import Button from '../Utils/Button/index';
 import './style.css';
 
-export default () => <h1>Hello World</h1>;
+export default () => {
+  return (
+    <div>
+      <Button />
+    </div>
+  );
+};
