@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     .validateAsync(req.body)
     .then((data) => {
       const {
-        createdAt, totalPrice, meals, tableNumber,
+        createdAt, totalPrice, tableNumber, meals,
       } = data;
       allMeals = meals;
       return addOrder(createdAt, totalPrice, tableNumber);
