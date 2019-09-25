@@ -7,11 +7,11 @@ tape('test success for /order', (t) => {
     .post('/api/v1/order')
     .send({
 
-      createdAt: '2008-01-01 00:00:01',
+      createdAt: '1569396246734',
       totalPrice: 44.05,
       tableNumber: 1,
       meals: [{
-        mealId: 2, amount: 1, price: 4.02, salt: 1, spices: 0, vegetables: ['t', 'b'],
+        mealId: 1, amount: 2, price: 4.02, salt: 1, spices: 0, vegetables: ['t', 'b'],
       }],
     })
     .expect(200)
@@ -20,11 +20,9 @@ tape('test success for /order', (t) => {
       if (err) {
         t.error(err);
       } else {
-        t.deepEquals(res.body, { statusCode: 200 }, 'Status code should be 200');
+        t.deepEquals(res.body, { statusCode: 201 }, 'Status code should be 200');
       }
 
       t.end();
     });
 });
-
-tape.onFinish(() => process.exit(0));
