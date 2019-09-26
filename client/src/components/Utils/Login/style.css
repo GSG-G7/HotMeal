@@ -1,12 +1,12 @@
-.background-image {
+.login__background--image {
   position: relative;
   width: 100%;
-  height: 810px;
+  height: 812px;
   top: 0;
   left: 0;
 }
 
-.waiter-image {
+.login__waiter-image {
   position: absolute;
   width: 75px;
   height: 64px;
@@ -15,7 +15,7 @@
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
 }
 
-.title {
+.login__title {
   position: absolute;
   width: 169px;
   height: 44px;
@@ -30,12 +30,12 @@
   color: #FFFFFF;
 }
 
-.table-number {
+.login__table-number {
   position: absolute;
   width: 112px;
   height: 20px;
-  left: 53px;
-  top: 340px;
+  left: 50px;
+  top: 322px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
@@ -46,20 +46,32 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.first-line {
+.login__first-input {
   position: absolute;
-  width: 239px;
+  width: 170px;
   height: 0px;
-  left: 60px;
+  left: 58px;
   top: 370px;
-  border: 1px solid #FF9636;
+  border: none;
+  border-bottom: 1px solid #FF9636;
 }
-.secret-number {
+
+.login__second-input {
+  position: absolute;
+  width: 170px;
+  height: 0px;
+  left: 58px;
+  top: 465px;
+  border: none;
+  border-bottom: 1px solid #FF9636;
+}
+
+.login__secret-number {
   position: absolute;
   width: 115px;
   height: 19px;
   left: 53px;
-  top: 435px;
+  top: 417px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
@@ -70,16 +82,7 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.second-line {
-  position: absolute;
-  width: 239px;
-  height: 0px;
-  left: 60px;
-  top: 465px;
-  border: 1px solid #FF9636;
-}
-
-.login-button {
+.login__button {
   position: absolute;
   width: 262px;
   height: 47px;
