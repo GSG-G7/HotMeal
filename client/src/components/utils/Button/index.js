@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-export default function Button({ className, text }) {
+export default function Button({ className, children }) {
   return (
     <button type="button" className={`button ${className}`}>
-      {text}
+      {children}
     </button>
   );
 }
 
 Button.propTypes = {
   className: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 };
