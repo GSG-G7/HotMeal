@@ -1,5 +1,6 @@
 const { insertOrder, insertOrderMeals } = require('../database/queries/order');
 const orderSchema = require('../validation/orderSchema');
+const recordDoesNotExist = require('./errorHandlers');
 
 module.exports = (req, res, next) => {
   let allMeals;
@@ -22,7 +23,7 @@ module.exports = (req, res, next) => {
       res.status(201).send({ statusCode: 201, message: 'Insertion order success' });
     })
     .catch((error) => {
-      if (error.code === '23503') {
+      if (recordDoesNotExist(error)) {
         res.status(422).send({ statusCode: 422, error: error.detail });
       } else if (error.details) {
         if (error.details[0].message) {
