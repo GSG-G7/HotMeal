@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from '../Utils/Button/index';
+import Login from '../Utils/Login/index';
 import './style.css';
 
 export default () => {
   return (
     <div>
-      <Button />
+      <Login />
     </div>
   );
 };
