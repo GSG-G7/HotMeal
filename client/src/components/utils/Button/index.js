@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-export default function Button({ className, onClick, children }) {
+export default function Button({
+  className = '',
+  onClick = undefined,
+  children,
+}) {
   return (
     <button
       type="button"
@@ -14,9 +18,12 @@ export default function Button({ className, onClick, children }) {
     </button>
   );
 }
+Button.defaultProps = {
+  onClick: undefined,
+};
 
 Button.propTypes = {
   className: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.string.isRequired,
 };
