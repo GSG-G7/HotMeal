@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../Utils/Login/index';
+import Login from '../utils/Login/index';
 import './style.css';
 
 export default () => {

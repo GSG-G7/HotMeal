@@ -27,9 +27,8 @@ export default class Login extends React.Component {
           alt="backgroundImage"
           className="login__background--image"
         />
-        <img src={waiter} alt="waiterImage" className="login__waiter-image" />
         <h1 className="login__title">HOTMEAL</h1>
-        <h5 className="login__table-number">Table name</h5>
+        <img src={waiter} alt="waiterImage" className="login__waiter-image" />
         <input
           className="login__first-input"
           type="number"
@@ -38,7 +37,6 @@ export default class Login extends React.Component {
           value={tableNumber}
           onChange={this.setTableNumber}
         />
-        <h5 className="login__secret-number">Secret number</h5>
         <input
           className="login__second-input"
           type="number"
