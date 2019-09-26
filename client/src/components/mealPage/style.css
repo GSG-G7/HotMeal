@@ -1,0 +1,75 @@
+.meal {
+    width: 95%;
+    height: 80px;
+    display: flex;
+    padding: 7px;
+    box-shadow: 0px 3px 8px #888888;
+    border-radius: 8px;
+    align-items: center;
+}
+.meal:hover{
+    cursor: pointer;
+}
+
+.meal__img {
+    width: 30%;
+    height: 10vh;
+    border-radius: 7px;
+    display: block;
+}
+.meal__name{
+
+width: 100%;
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+margin: 0px 2px 8px 2px ;
+font-weight: bold;
+color: #000000;
+}
+
+.meal__desc{
+    width: 60%;
+    padding: 7px;
+ 
+}
+.meal__shorDesc{
+    width: 100%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0px 2px 8px 2px ;
+    font-size: 14px;
+    color: #4F4F4F;
+}
+
+
+.meal__icon{
+    width: 20%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.fas{
+    width: 24px;
+    margin: 0 auto ;
+
+ 
+}
+.fas:hover{
+    cursor: pointer;
+}
+.meal__price{
+    width: 80%;
+    display:  block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    margin: 0px 1px 10px 2px ;
+    font-weight: bold;
+    font-size: 12px;
+    color: #ED6707;
+    
+    }
