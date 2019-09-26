@@ -1,4 +1,9 @@
 import React from 'react';
 import './style.css';
+import Home from '../home';
 
-export default () => <h1>Hello World</h1>;
+export default () => (
+  <div>
+    <Home />
+  </div>
+);
