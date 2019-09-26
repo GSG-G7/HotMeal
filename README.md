@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.com/GSG-G7/HOTMEAL.png?branch=master)](https://api.travis-ci.com/GSG-G7/HOTMEAL)
+
 # HotMeal
 
 ## Solution
