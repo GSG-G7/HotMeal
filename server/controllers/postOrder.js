@@ -10,10 +10,10 @@ module.exports = (req, res, next) => {
     })
     .then((data) => {
       const {
-        createdAt, totalPrice, meals,
+        createdAt, totalPrice, meals, tableNumber,
       } = data;
       allMeals = meals;
-      return insertOrder(createdAt, totalPrice, req.user.tableNumber);
+      return insertOrder(createdAt, totalPrice, tableNumber);
     })
     .then((order) => {
       const { rows } = order;
@@ -24,7 +24,7 @@ module.exports = (req, res, next) => {
     })
     .catch((error) => {
       if (recordDoesNotExist(error)) {
-        res.status(422).send({ statusCode: 422, error: error.detail });
+        res.status(422).send({ statusCode: 422, error: 'Unable to process your order. Meal does not exist' });
       } else if (error.details) {
         if (error.details[0].message) {
           res.status(400).send({ statusCode: 400, error: error.details[0].message });
