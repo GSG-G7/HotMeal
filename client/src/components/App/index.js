@@ -1,4 +1,9 @@
 import React from 'react';
+import MealPage from '../mealPage';
 import './style.css';
 
-export default () => <h1>Hello World</h1>;
+export default () => (
+  <div className="app">
+    <MealPage />
+  </div>
+);
