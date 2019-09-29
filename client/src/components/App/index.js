@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Error404 from '../utils/Error404/error404';
+import Error404 from '../utils/Error404/index';
 import './style.css';
 
 export default () => {
