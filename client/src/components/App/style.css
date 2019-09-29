@@ -28,7 +28,7 @@
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
 }
-.category{
+.categoryName{
   font-weight: bold;
   font-size: 18px;
   font-family: Lato;
@@ -43,7 +43,7 @@
   color: #FFF;;
   flex: 1;
 }
-.category{
+.categoryName{
   color: #FFF;
   flex: 3;
 }
