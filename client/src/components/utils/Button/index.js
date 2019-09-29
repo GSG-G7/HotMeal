@@ -5,7 +5,7 @@ import './style.css';
 
 export default function Button({ className }) {
   return (
-    <button type="button" className={`button ${className}`}>
+    <button type="submit" className={`button ${className}`}>
       Enter
     </button>
   );

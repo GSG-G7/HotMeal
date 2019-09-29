@@ -27,15 +27,17 @@
 input {
   position: absolute;
   left: 4rem;
-  width: 30vw;
+  width: 38vw;
   height: 2vh;
   background-color: #21232F;
   border: none;
+  color:#FFFFFF;
+  font: 1.2rem Roboto;
 }
 
 ::placeholder {
   font-family: Roboto;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 300;
   color: #FFFFFF;
 }
