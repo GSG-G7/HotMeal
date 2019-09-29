@@ -1,6 +1,7 @@
+
 .meal {
-    width: 95%;
-    height: 80px;
+    width: 97%;
+    height: 99px;
     display: flex;
     padding: 7px;
     box-shadow: 0px 3px 8px #888888;
@@ -24,7 +25,7 @@ font-family: Lato;
 font-style: normal;
 font-weight: normal;
 font-size: 16px;
-margin: 0px 2px 8px 2px ;
+margin:0px 2px 1px 0px;
 font-weight: bold;
 color: #000000;
 }
@@ -39,7 +40,7 @@ color: #000000;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    margin: 0px 2px 8px 2px ;
+    margin: 6px 2px 2px 2px;
     font-size: 14px;
     color: #4F4F4F;
 }
@@ -73,3 +74,10 @@ color: #000000;
     color: #ED6707;
     
     }
+ul{
+    /* padding: 0px 1px 2px 0px; */
+    list-style-type: none;
+}
+li{
+    margin: 10px 1px 9px 9px;
+}
