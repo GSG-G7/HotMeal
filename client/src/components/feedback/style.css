@@ -10,7 +10,7 @@
   --width-inputs:60vw;
 }
 .bg{
-  background: url('../../feedback.png');
+  background: url('../../assets/images/feedback.png');
   width:                          100vw;
   height:                         100vh;
   background-repeat:          no-repeat;
@@ -21,7 +21,7 @@
 .card{
   margin:        1rem auto;
   background:         #000;
-  font-family: sans-serif;
+  font-family: Lato, sans-serif;
   color: white;
   opacity:               .85;
   width:                75vw;
