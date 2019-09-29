@@ -4,7 +4,7 @@ import CardMeal from './CardMeal';
 
 import './style.css';
 
-const MealPage = ({ data }) => {
+const MealList = ({ data }) => {
   const listItems = data.map(item => {
     return (
       <li>
@@ -14,7 +14,7 @@ const MealPage = ({ data }) => {
   });
   return <ul className="menu">{listItems}</ul>;
 };
-MealPage.propTypes = {
+MealList.propTypes = {
   data: PropTypes.isRequired,
 };
-export default MealPage;
+export default MealList;
