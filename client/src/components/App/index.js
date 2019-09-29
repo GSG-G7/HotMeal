@@ -1,11 +1,14 @@
 import React from 'react';
-import Login from '../utils/Login/index';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Error404 from '../utils/Error404/error404';
 import './style.css';
 
 export default () => {
   return (
-    <div>
-      <Login />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="*" component={Error404} />
+      </Switch>
+    </Router>
   );
 };
