@@ -1,25 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import CardMeal from './CardMeal';
+
 import './style.css';
-import srcImg from '../../assets/screen-0.jpg';
 
-const CardMeal = () => (
-  <div className="meal ">
-    <img className="meal__img" src={srcImg} alt="food" />
-    <div className="meal__desc">
-      <h4 className="meal__name">Shrimp Pizza</h4>
-      <p className="meal__shorDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit
-      </p>
-    </div>
-
-    <div className="meal__icon">
-      <i className="fas fa-angle-right"></i>
-      <span className="meal__price">25 NIS</span>
-    </div>
-  </div>
-);
-export default () => (
-  <div>
-    <CardMeal />
-  </div>
-);
+const MealPage = ({ data }) => {
+  const listItems = data.map(item => {
+    return (
+      <li>
+        <CardMeal oneMeal={item} />
+      </li>
+    );
+  });
+  return <ul className="menu">{listItems}</ul>;
+};
+MealPage.propTypes = {
+  data: PropTypes.isRequired,
+};
+export default MealPage;
