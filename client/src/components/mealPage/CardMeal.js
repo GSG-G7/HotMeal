@@ -1,0 +1,27 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import './style.css';
+
+const CardMeal = ({ oneMeal: { img, name, shortDesc, price } }) => (
+  <div className="meal ">
+    <img className="meal__img" src={img} alt="food" />
+    <div className="meal__desc">
+      <h4 className="meal__name">{name}</h4>
+      <p className="meal__shorDesc">{shortDesc}</p>
+    </div>
+
+    <div className="meal__icon">
+      <i className="fas fa-angle-right"></i>
+      <span className="meal__price">{price}</span>
+    </div>
+  </div>
+);
+CardMeal.propTypes = {
+  oneMeal: PropTypes.isRequired,
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  shortDesc: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
+
+export default CardMeal;
