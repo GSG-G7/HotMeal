@@ -21,14 +21,16 @@ export default class Login extends React.Component {
   handleSubmit = e => {
     console.log('alaa');
     e.preventDefault();
-    fetch('/api/v1/login', {
-      method: 'post',
+    fetch('http://localhost:5000/api/v1/login', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: {
+      body: JSON.stringify({
         table_number: this.tableNumber,
         secret_number: this.secretNumber,
-      },
-    }).catch(err => console.log(`err ${err}`));
+      }),
+    })
+      .then(res => res.json())
+      .catch(err => console.log(`err ${err}`));
   };
 
   render() {
@@ -55,7 +57,7 @@ export default class Login extends React.Component {
           <input
             value={secretNumber}
             className="login__secret-number"
-            type="number"
+            type="text"
             placeholder="Secret number"
             name="secret number"
             onChange={this.setSecretNumber}
