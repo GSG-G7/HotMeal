@@ -31,7 +31,7 @@
   left: 0;
   top: -10%;
   transform: translate(-0.2%, 5.7%);
-  background: url(/static/media/popupimg.2a28d3b0.svg);
+  background: url('../../../assets/images/popupimg.svg');
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -78,8 +78,6 @@
   text-align: center;
   width: 30%;
   height: 100%;
-  background: #ED6707;
-  border-radius: 3px;
   margin: auto;
 }
 
@@ -91,15 +89,21 @@
   left: 50%;
   bottom: 20%;
   transform: translate(-50%, 50%);
-  background: #ED6707;
-  border-radius: 3px;
+  
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 760px) {
   .popup-img-container {
     background: url('../../../assets/images/largesecreen.svg');
     background-repeat: no-repeat;
   background-size: cover;
+
+  }
+}
+@media screen and (min-width: 900px){
+  .popup{
+    width: 40%;
+    height: 40%;
 
   }
 }
