@@ -1,11 +1,11 @@
 import React from 'react';
-import Details from '../detailsPage';
+import DetailsPage from '../DetailsPage';
 import './style.css';
 
 export default () => {
   return (
     <div className="pageDetalis">
-      <Details />
+      <DetailsPage />
     </div>
   );
 };

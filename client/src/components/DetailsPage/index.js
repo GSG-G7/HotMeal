@@ -1,5 +1,6 @@
 import React from 'react';
 import imgMeal from '../../assets/shrimppizza.jpg';
+import Button from '../utils/Button';
 import './style.css';
 
 const Details = () => {
@@ -41,7 +42,7 @@ const Details = () => {
         Editable Ingradients :
         <div className="optios">
           <div className="vegetables select">
-            - Vegetables
+            <div>- Vegetables</div>
             <label htmlFor="capsicurm">
               Capsicum
               <input type="checkbox" value="Capsicurm" id="capsicurm" />
@@ -56,7 +57,7 @@ const Details = () => {
             </label>
           </div>
           <div className="spices select">
-            - Spices
+            <div>- Spices</div>
             <label htmlFor="littel">
               Littel
               <input type="radio" value="Littel" id="littel" name="spice" />
@@ -71,7 +72,7 @@ const Details = () => {
             </label>
           </div>
           <div className="salt select">
-            -Salt
+            <div>-Salt</div>
             <label htmlFor="littelS">
               Littel
               <input type="radio" id="littelS" value="Littel" name="salt" />
@@ -91,6 +92,10 @@ const Details = () => {
             Quantity:
             <input type="number" name="Quantity" id="quantity" />
           </label>
+        </div>
+        <div className="btns">
+          <Button className="btn_order">Show my order</Button>
+          <Button className="btn_order">Add to my order</Button>
         </div>
       </div>
     </div>
