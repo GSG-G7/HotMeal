@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactStars from 'react-stars';
 import propTypes from 'prop-types';
-
 import './style.css';
 import Button from '../utils/Button';
 
@@ -47,6 +46,7 @@ export default class FeedbackComponent extends Component {
   };
 
   render() {
+    const { history } = this.props;
     const { rate, errorMessage } = this.state;
     return (
       <div className="bg">
@@ -93,7 +93,9 @@ export default class FeedbackComponent extends Component {
               </Button>
             </div>
             <div className="div-button">
-              <Button className="button">Cancel</Button>
+              <Button className="button" onClick={() => history.push('/home')}>
+                Cancel
+              </Button>
             </div>
           </div>
         </div>
