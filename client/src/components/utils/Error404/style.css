@@ -1,0 +1,13 @@
+.error404__image {
+  position: relative;
+  height: 98vh;
+  width: 100%;
+}
+.error404__button {
+  position: absolute;
+  top: 40rem;
+  left: 4.7rem;
+  width: 60vw;
+  height: 6vh;
+  font-size: 1.3rem;
+}

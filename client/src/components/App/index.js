@@ -1,13 +1,14 @@
 import React from 'react';
-import MenuPage from '../mealPage/MenuPage';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Error404 from '../utils/Error404/index';
 import './style.css';
 
-const App = () => {
+export default () => {
   return (
-    <div className="app">
-      <MenuPage category="Main Meals" />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="*" component={Error404} />
+      </Switch>
+    </Router>
   );
 };
-
-export default App;
