@@ -8,9 +8,9 @@ import './style.css';
 export default () => (
   <Router>
     <Switch>
-      <Route exact path="*" component={Error404} />
-      {/* <Route path="/home" exact component={Home} /> */}
       <Route path="/" exact component={Feedback} />
+      {/* <Route path="/home" exact component={Home} /> */}
+      <Route path="*" component={Error404} />
     </Switch>
   </Router>
 );
