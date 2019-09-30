@@ -1,5 +1,5 @@
 import React from 'react';
-import Details from '../detailsPage';
+import Details from './Details';
 import './style.css';
 
 export default () => {

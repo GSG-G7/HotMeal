@@ -1,3 +1,37 @@
+  
+* {
+  padding: 0 ;
+  margin: 0;
+  box-sizing: border-box;
+}
+.nav{
+  height: 3rem;
+  align-items: center;
+  padding: 0.8rem;
+}
+.header{
+  width: 100%;
+  background: #ED6707;
+  align-items: center;
+}
+.header__nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.titel{
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-left: 1rem;
+  font-family: Lato;
+  color: #FFF;
+  flex: 3;
+
+}
+
+.fas{
+  color: #FFF;
+}
 .App {
   text-align: center;
 }
