@@ -1,20 +1,53 @@
 import React, { Component } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import ReactStars from 'react-stars';
+import propTypes from 'prop-types';
+
 import './style.css';
 import Button from '../utils/Button';
 
-export default class feedback extends Component {
+export default class FeedbackComponent extends Component {
   state = {
     rate: 2.5,
+    email: '',
+    content: '',
+    errorMessage: '',
   };
 
-  newRate = newR => {
-    this.setState({ rate: newR });
+  setFeedback = event => this.setState({ content: event.target.value });
+
+  setEmail = event => this.setState({ email: event.target.value });
+
+  newRate = newR => this.setState({ rate: newR });
+
+  sendFeedback = () => {
+    const { history, orderId = 1 } = this.props;
+    const { email, content: feedback } = this.state;
+    const data = {
+      orderId,
+      email,
+      feedback,
+    };
+    fetch('/api/v1/post-feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(status => {
+        if (status.statusCode === 201) {
+          this.setState({ errorMessage: '' });
+          history.push('/home');
+        } else {
+          this.setState({ errorMessage: status.error });
+        }
+      })
+      .catch(err => {
+        this.setState({ errorMessage: err });
+      });
   };
 
   render() {
-    const { rate } = this.state;
+    const { rate, errorMessage } = this.state;
     return (
       <div className="bg">
         <div className="card">
@@ -29,12 +62,19 @@ export default class feedback extends Component {
               <h4>Table</h4>
             </div>
           </div>
+          <div>{errorMessage}</div>
           <form>
-            <input type="text" className="email" placeholder="Email" />
+            <input
+              type="text"
+              onChange={this.setEmail}
+              className="email"
+              placeholder="Email"
+            />
 
             <textarea
               className="feedback"
-              placeholder="We are looking forward to hearing from you "
+              onChange={this.setFeedback}
+              placeholder="We are looking forward to hearing from you"
             ></textarea>
           </form>
           <div className="container_star">
@@ -48,7 +88,9 @@ export default class feedback extends Component {
           </div>
           <div className="All">
             <div className="div-button">
-              <Button className="button">Send</Button>
+              <Button className="button" onClick={this.sendFeedback}>
+                Send
+              </Button>
             </div>
             <div className="div-button">
               <Button className="button">Cancel</Button>
@@ -59,3 +101,7 @@ export default class feedback extends Component {
     );
   }
 }
+FeedbackComponent.propTypes = {
+  history: propTypes.string.isRequired,
+  orderId: propTypes.number.isRequired,
+};
