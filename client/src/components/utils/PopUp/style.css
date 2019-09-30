@@ -2,11 +2,11 @@
   position: absolute;
   text-align: center;
   width: 80%;
-  height: 36%;
-  right: 50%;
+  min-height: 30%;
   top: 50%;
-  transform: translate(50%, -50%);
-  background:#FFFFFF;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
   border-radius: 1.6rem;
   display: flex;
   flex-direction: column;
@@ -15,13 +15,14 @@
 }
 
 .popup-background{
-  position: absolute;
+  position: fixed;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgb(83, 79, 79);
-  mix-blend-mode: multiply;
+  min-height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup-img-container{
@@ -56,7 +57,7 @@
   font-family:'Roboto', sans-serif;
   font-style: oblique;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.5rem;
   text-align: center;
   color: #000000;

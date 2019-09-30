@@ -3,7 +3,14 @@ import propTypes from 'prop-types';
 import './style.css';
 import Button from '../Button';
 
-function PopUp({ message, is2btnNeeded, onClick1, onClick2, children }) {
+function PopUp({
+  message,
+  is2btnNeeded,
+  btnName1,
+  btnName2,
+  onClick1,
+  onClick2,
+}) {
   if (is2btnNeeded) {
     return (
       <div className="popup-background">
@@ -11,11 +18,11 @@ function PopUp({ message, is2btnNeeded, onClick1, onClick2, children }) {
           <div className="popup-img-container" />
           <p className="popup-text"> {message} </p>
           <div className="popup-btncontainer">
-            <Button type="submit" className="popup-2btns" onClick={onClick1}>
-              {children}
+            <Button type="button" className="popup-2btns" onClick={onClick1}>
+              {btnName1}
             </Button>
             <Button type="button" className="popup-2btns" onClick={onClick2}>
-              {children}
+              {btnName2}
             </Button>
           </div>
         </div>
@@ -28,8 +35,8 @@ function PopUp({ message, is2btnNeeded, onClick1, onClick2, children }) {
       <div className="popup">
         <div className="popup-img-container" />
         <p className="popup-text"> {message} </p>
-        <Button type="submit" className="popup-button" onClick={onClick1}>
-          {children}
+        <Button type="button" className="popup-button" onClick={onClick1}>
+          {btnName1}
         </Button>
       </div>
     </div>
@@ -41,10 +48,12 @@ PopUp.propTypes = {
   is2btnNeeded: propTypes.bool.isRequired,
   onClick1: propTypes.func.isRequired,
   onClick2: propTypes.func,
-  children: propTypes.string.isRequired,
+  btnName1: propTypes.string.isRequired,
+  btnName2: propTypes.string,
 };
 
 PopUp.defaultProps = {
   onClick2: undefined,
+  btnName2: undefined,
 };
 export default PopUp;
