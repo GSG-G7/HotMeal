@@ -1,0 +1,88 @@
+.login__background--image {
+  position: relative;
+  width: 100%;
+  height: 98vh;
+}
+
+.login__waiter-image {
+  position: absolute;
+  width: 23vw;
+  height: 10vh;
+  left: 9rem;
+  top: 15.5rem;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.login__title {
+  position: absolute;
+  left: 7.5rem;
+  top: 10rem;
+  font-family: Creepster;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.6rem;
+  color: #FFFFFF;
+}
+
+input {
+  position: absolute;
+  left: 4rem;
+  width: 38vw;
+  height: 2vh;
+  background-color: #21232F;
+  border: none;
+  color:#FFFFFF;
+  font: 1.2rem Roboto;
+}
+
+::placeholder {
+  font-family: Roboto;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #FFFFFF;
+}
+
+.login__table-number {
+  top: 24.1rem;
+}
+
+.login__secret-number {
+  top: 28.2rem;
+}
+
+hr {
+  position: absolute;
+  width: 239px;
+  height: 0px;
+  left: 4rem;
+  border: 1px solid #FF9636;
+}
+
+.login__first-line {
+  top: 25.1rem;
+}
+
+.login__second-line {
+  top: 29.2rem;
+}
+
+.login__err-message {
+  position: absolute;
+  top: 29.4rem;
+  left: 10%;
+  font-size: 1.3rem;
+  color: #ED1C24;
+  margin: 1.7rem auto;
+  text-align: center;
+  width: 80%;
+}
+
+.login__button {
+  position: absolute;
+  width: 66vw;
+  height: 6vh;
+  left: 3.9rem;
+  top: 34.4rem;
+  font-size: 1.5rem;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
