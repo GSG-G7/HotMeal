@@ -8,7 +8,7 @@ import './style.css';
 
 export default class Login extends React.Component {
   state = {
-    tableNumber: '',
+    tableNumber: null,
     secret: '',
     err: null,
   };
@@ -24,7 +24,7 @@ export default class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { tableNumber, secret } = this.state;
-    const { history } = this.props;
+    const { history, updateTableNumber } = this.props;
     logInSchema
       .validateAsync({ tableNumber, secret })
       .then(() => {
@@ -39,7 +39,7 @@ export default class Login extends React.Component {
       })
       .then(res => {
         if (res.status === 200) {
-          res.json();
+          updateTableNumber(tableNumber);
           history.push('/');
         }
         return this.setState({ err: 'Incorrect Table Number or Secret' });
@@ -95,5 +95,6 @@ export default class Login extends React.Component {
 }
 
 Login.propTypes = {
-  history: propTypes.string.isRequired,
+  history: propTypes.isRequired,
+  updateTableNumber: propTypes.func.isRequired,
 };
