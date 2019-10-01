@@ -1,6 +1,7 @@
 import React from 'react';
-import './style.css';
+
 import Slider from './slider/slider';
+import './style.css';
 
 export default () => (
   <div className="bage">

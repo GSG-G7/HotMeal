@@ -3,7 +3,6 @@ import './slider.css';
 import left from '../../../assets/angle-left.svg';
 import right from '../../../assets/angle-right.svg';
 
-// const slider = () => {};
 class slider extends React.Component {
   state = {
     counter: 1,
@@ -16,21 +15,15 @@ class slider extends React.Component {
   }
 
   plus = () => {
-    const { counter } = this.state;
-    if (counter === 4) {
-      this.setState({ counter: 1 });
-    } else {
-      this.setState(prev => ({ counter: prev.counter + 1 }));
-    }
+    this.setState(prev =>
+      prev.counter === 4 ? { counter: 1 } : { counter: prev.counter + 1 }
+    );
   };
 
   minus = () => {
-    const { counter } = this.state;
-    if (counter === 1) {
-      this.setState({ counter: 4 });
-    } else {
-      this.setState(prev => ({ counter: prev.counter - 1 }));
-    }
+    this.setState(prev =>
+      prev.counter === 1 ? { counter: 4 } : { counter: prev.counter - 1 }
+    );
   };
 
   render() {
