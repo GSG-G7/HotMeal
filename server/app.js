@@ -1,6 +1,5 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const cros = require('cors');
 const router = require('./controllers');
 require('env2')('config.env');
 
@@ -8,7 +7,6 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 app.set('port', port);
-app.use(cros());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
