@@ -113,6 +113,6 @@ export default class FeedbackComponent extends React.Component {
   }
 }
 FeedbackComponent.propTypes = {
-  history: propTypes.string.isRequired,
+  history: propTypes.objectOf(propTypes.any).isRequired,
   orderId: propTypes.number.isRequired,
 };
