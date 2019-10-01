@@ -1,4 +1,5 @@
 import React from 'react';
+import logInSchema from '../../../validation/login';
 import Button from '../Button/index';
 import background from '../../../assets/images/login.background.png';
 import waiter from '../../../assets/images/waiter.png';
@@ -7,34 +8,52 @@ import './style.css';
 export default class Login extends React.Component {
   state = {
     tableNumber: '',
-    secretNumber: '',
+    secret: '',
+    err: null,
   };
 
   setTableNumber = e => {
     this.setState({ tableNumber: e.target.value });
   };
 
-  setSecretNumber = e => {
-    this.setState({ secretNumber: e.target.value });
+  setSecret = e => {
+    this.setState({ secret: e.target.value });
   };
 
   handleSubmit = e => {
-    console.log('alaa');
     e.preventDefault();
-    fetch('http://localhost:5000/api/v1/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        table_number: this.tableNumber,
-        secret_number: this.secretNumber,
-      }),
-    })
-      .then(res => res.json())
-      .catch(err => console.log(`err ${err}`));
+    const { tableNumber, secret } = this.state;
+    logInSchema
+      .validateAsync({ tableNumber, secret })
+      .then(() => {
+        return fetch('/api/v1/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tableNumber,
+            secret,
+          }),
+        });
+      })
+      .then(res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        this.setState({ err: 'Incorrect Table Number or Secret' });
+      })
+      .catch(err => {
+        if (err.details) {
+          if (err.details[0].message) {
+            this.setState({ err: err.details[0].message });
+          }
+        } else {
+          this.setState({ err: 'Internal Server Error' });
+        }
+      });
   };
 
   render() {
-    const { tableNumber, secretNumber } = this.state;
+    const { tableNumber, secret, err } = this.state;
     return (
       <div>
         <img
@@ -48,23 +67,23 @@ export default class Login extends React.Component {
           <input
             value={tableNumber}
             className="login__table-number"
-            type="number"
             placeholder="Table number"
-            name="table number"
+            name="tableNumber"
             onChange={this.setTableNumber}
           />
           <hr className="login__first-line" />
           <input
-            value={secretNumber}
+            value={secret}
             className="login__secret-number"
-            type="text"
-            placeholder="Secret number"
-            name="secret number"
-            onChange={this.setSecretNumber}
+            type="password"
+            placeholder="Secret key"
+            name="secret"
+            onChange={this.setSecret}
           />
           <hr className="login__second-line" />
           <Button type="submit" className="login__button"></Button>
         </form>
+        <p className="login__err-message">{err}</p>
       </div>
     );
   }

@@ -54,7 +54,7 @@ hr {
   position: absolute;
   width: 239px;
   height: 0px;
-  left: 60px;
+  left: 4rem;
   border: 1px solid #FF9636;
 }
 
@@ -65,7 +65,18 @@ hr {
 .login__second-line {
   top: 29.2rem;
 }
- 
+
+.login__err-message {
+  position: absolute;
+  top: 29.4rem;
+  left: 10%;
+  font-size: 1.3rem;
+  color: #ED1C24;
+  margin: 1.7rem auto;
+  text-align: center;
+  width: 80%;
+}
+
 .login__button {
   position: absolute;
   width: 66vw;
