@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactStars from 'react-stars';
 import propTypes from 'prop-types';
 import Button from '../utils/Button';
 import schemad from './feedback';
 import './style.css';
 
-export default class FeedbackComponent extends Component {
+export default class FeedbackComponent extends React.Component {
   state = {
     rate: 2.5,
     email: '',
