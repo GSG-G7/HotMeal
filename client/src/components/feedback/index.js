@@ -70,7 +70,7 @@ export default class FeedbackComponent extends Component {
             </div>
           </div>
           <div className="error">{errorMessage}</div>
-          <form>
+          <form className="feedback-form">
             <input
               type="email"
               value={email}
