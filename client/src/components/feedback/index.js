@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactStars from 'react-stars';
 import propTypes from 'prop-types';
-import './style.css';
 import Button from '../utils/Button';
+import schemad from './feedback';
+import './style.css';
 
 export default class FeedbackComponent extends Component {
   state = {
@@ -19,30 +20,41 @@ export default class FeedbackComponent extends Component {
   newRate = newR => this.setState({ rate: newR });
 
   sendFeedback = () => {
-    const { history, orderId = 1 } = this.props;
+    const { history, orderId } = this.props;
     const { email, content: feedback } = this.state;
     const data = {
       orderId,
       email,
       feedback,
     };
-    fetch('/api/v1/post-feedback', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
+    schemad
+      .validateAsync(data)
+      .then(() =>
+        fetch('/api/v1/post-feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+      )
       .then(res => res.json())
       .then(payload => {
         return payload.statusCode === 201
-          ? history.push('/home')
+          ? history.push('/')
           : this.setState({ errorMessage: payload.error });
       })
-      .catch(err => this.setState({ errorMessage: err }));
+      .catch(err => {
+        const error = JSON.parse(JSON.stringify(err));
+        if (error.details[0]) {
+          this.setState({ errorMessage: error.details[0].message });
+        } else {
+          history.push('/serverError');
+        }
+      });
   };
 
   render() {
     const { history } = this.props;
-    const { rate, errorMessage } = this.state;
+    const { rate, errorMessage, email, content } = this.state;
     return (
       <div className="bg">
         <div className="card">
@@ -60,7 +72,8 @@ export default class FeedbackComponent extends Component {
           <div className="error">{errorMessage}</div>
           <form>
             <input
-              type="text"
+              type="email"
+              value={email}
               onChange={this.setEmail}
               className="email"
               placeholder="Email"
@@ -68,6 +81,7 @@ export default class FeedbackComponent extends Component {
 
             <textarea
               className="feedback"
+              value={content}
               onChange={this.setFeedback}
               placeholder="We are looking forward to hearing from you"
             ></textarea>
@@ -88,7 +102,7 @@ export default class FeedbackComponent extends Component {
               </Button>
             </div>
             <div className="div-button">
-              <Button className="button" onClick={() => history.push('/home')}>
+              <Button className="button" onClick={() => history.push('/')}>
                 Cancel
               </Button>
             </div>
