@@ -39,7 +39,7 @@ export default class Login extends React.Component {
         if (res.status === 200) {
           return res.json();
         }
-        this.setState({ err: 'Incorrect Table Number or Secret' });
+        return this.setState({ err: 'Incorrect Table Number or Secret' });
       })
       .catch(err => {
         if (err.details) {
