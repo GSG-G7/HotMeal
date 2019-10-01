@@ -39,9 +39,7 @@
     "env2": "^2.2.2",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^7.12.1",
-    "react-router-dom": "^5.1.1",
-    "react-stars": "^2.2.5"
+    "pg": "^7.12.1"
   },
   "pre-commit": [
     "test",
