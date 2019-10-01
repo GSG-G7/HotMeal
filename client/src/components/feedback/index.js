@@ -2,7 +2,7 @@ import React from 'react';
 import ReactStars from 'react-stars';
 import propTypes from 'prop-types';
 import Button from '../utils/Button';
-import schemad from './feedback';
+import schemad from '../../validation/feedback';
 import './style.css';
 
 export default class FeedbackComponent extends React.Component {
