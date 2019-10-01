@@ -12,8 +12,9 @@
 
 .bage__buttons_button{
     margin: 1rem auto;
-    color:rgb(21, 9, 32);   
-    padding: 2rem; 
+    padding: 0.4rem;
+    font-family: Lato, sans-serif;
+    width: 9rem;
 }
  
 
