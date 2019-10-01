@@ -32,17 +32,12 @@ export default class FeedbackComponent extends Component {
       body: JSON.stringify(data),
     })
       .then(res => res.json())
-      .then(status => {
-        if (status.statusCode === 201) {
-          this.setState({ errorMessage: '' });
-          history.push('/home');
-        } else {
-          this.setState({ errorMessage: status.error });
-        }
+      .then(payload => {
+        return payload.statusCode === 201
+          ? history.push('/home')
+          : this.setState({ errorMessage: payload.error });
       })
-      .catch(err => {
-        this.setState({ errorMessage: err });
-      });
+      .catch(err => this.setState({ errorMessage: err }));
   };
 
   render() {
@@ -62,7 +57,7 @@ export default class FeedbackComponent extends Component {
               <h4>Table</h4>
             </div>
           </div>
-          <div>{errorMessage}</div>
+          <div className="error">{errorMessage}</div>
           <form>
             <input
               type="text"

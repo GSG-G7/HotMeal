@@ -8,8 +8,8 @@ import './style.css';
 export default () => (
   <Router>
     <Switch>
-      <Route path="/" exact component={Feedback} />
-      {/* <Route path="/home" exact component={Home} /> */}
+      <Route exact path="/feedback" component={Feedback} />
+      {/* <Route path="/" exact component={Home} /> */}
       <Route path="*" component={Error404} />
     </Switch>
   </Router>
