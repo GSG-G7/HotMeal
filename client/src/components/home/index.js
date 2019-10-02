@@ -88,7 +88,7 @@ class Home extends Component {
             </Button>
           </div>
           <div>
-            <Button className="bage__buttons_button" onClick={logout}>
+            <Button className="logout bage__buttons_button" onClick={logout}>
               Logout
             </Button>
           </div>

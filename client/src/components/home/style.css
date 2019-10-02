@@ -16,5 +16,10 @@
     font-family: Lato, sans-serif;
     width: 9rem;
 }
- 
-
+.logout{
+    background: #fff;
+    color: black;
+    border: 0.2rem solid #ED6707;
+    box-shadow: black;
+    outline: none;
+}
