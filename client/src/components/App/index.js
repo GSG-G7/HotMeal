@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import MenuPage from '../MealPage';
 
 import Login from '../pages/Login/index';
 import Error404 from '../pages/Error404/index';
@@ -28,6 +29,8 @@ export default class App extends React.Component {
             )}
           />
           <Route exact path="/" component={Home} />
+          <Route path="/meals" component={MenuPage} />
+
           <Route exact path="*" component={Error404} />
         </Switch>
       </Router>
