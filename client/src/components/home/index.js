@@ -13,10 +13,6 @@ class Home extends Component {
     callWaiter: null,
   };
 
-  componentWillUnmount() {
-    this.setState({ logoutComp: null, callWaiter: null });
-  }
-
   logoutPop = () => {
     const { logoutComp } = this.state;
     const { history } = this.props;
@@ -25,7 +21,7 @@ class Home extends Component {
         <Pop
           is2btnNeeded={false}
           btnName1="Login"
-          message="You are loged out know"
+          message="You are loged out now"
           onClick1={() => history.push('/login')}
         />
       );
@@ -35,13 +31,12 @@ class Home extends Component {
 
   waiterPop = () => {
     const { callWaiter } = this.state;
-    // const { history } = this.props;
     if (callWaiter) {
       return (
         <Pop
           is2btnNeeded={false}
           btnName1="Ok"
-          message="The waiter is comming"
+          message="The waiter is coming"
           onClick1={() => this.setState({ callWaiter: null })}
         />
       );
@@ -56,7 +51,7 @@ class Home extends Component {
       fetch('/api/v1/logout')
         .then(res => res.json())
         .then(payload => {
-          return payload.statusCode !== 200
+          return payload.statusCode === 200
             ? this.setState({ logoutComp: true })
             : '';
         });
