@@ -6,24 +6,46 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.nav{
+  height: 3rem;
+}
+.header{
+  width: 100%;
+  background: #ED6707;
+}
+.header__nav{
+  display: flex;
+  flex-direction: row;
+  line-height: 1rem;
+  padding: 6px 0px 11px 0px;
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:30px;
+	right:30px;
+	background-color:#ED6707;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+.categoryName{
+  color: #FFF;
+  flex: 3;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: Lato;
+}
+.my-float{
+	margin-top:22px;
+}
+.app{
+  width: 100%;
+}
+.page{
+  color: #FFF;;
+  flex: 1;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
