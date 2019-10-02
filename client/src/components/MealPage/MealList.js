@@ -6,22 +6,25 @@ import CardMeal from './CardMeal';
 import './style.css';
 
 const MealList = ({ data }) => {
-  const listItems = data.map(item => {
-    return (
-      <Link
-        className="link"
-        to={{
-          pathname: '/details',
-          state: { item },
-        }}
-      >
-        <li>
-          <CardMeal key={item.id} oneMeal={item} />
-        </li>
-      </Link>
-    );
-  });
-  return <ul className="menu">{listItems}</ul>;
+  if (data) {
+    const listItems = data.map(item => {
+      return (
+        <Link
+          className="link"
+          to={{
+            pathname: '/details',
+            state: { item },
+          }}
+        >
+          <li>
+            <CardMeal key={item.id} oneMeal={item} />
+          </li>
+        </Link>
+      );
+    });
+    return <ul className="menu">{listItems}</ul>;
+  }
+  return '';
 };
 MealList.propTypes = {
   data: PropTypes.isRequired,
