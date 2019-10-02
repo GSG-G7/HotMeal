@@ -29,6 +29,8 @@
 	box-shadow: 2px 2px 3px #999;
 }
 .categoryName{
+  color: #FFF;
+  flex: 3;
   font-weight: bold;
   font-size: 18px;
   font-family: Lato;
@@ -39,11 +41,8 @@
 .app{
   width: 100%;
 }
-.fas{
+.page{
   color: #FFF;;
   flex: 1;
 }
-.categoryName{
-  color: #FFF;
-  flex: 3;
-}
+

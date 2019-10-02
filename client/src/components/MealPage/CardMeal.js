@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
-const CardMeal = ({ oneMeal: { img, name, shortDesc, price } }) => (
+const CardMeal = ({ oneMeal: { img, name, short_desc: shortDesc, price } }) => (
   <div className="meal ">
     <img className="meal__img" src={img} alt="food" />
     <div className="meal__desc">
@@ -11,7 +11,7 @@ const CardMeal = ({ oneMeal: { img, name, shortDesc, price } }) => (
     </div>
 
     <div className="meal__icon">
-      <i className="fas fa-angle-right"></i>
+      <i className="fas card fa-angle-right"></i>
       <span className="meal__price">{price}</span>
     </div>
   </div>
@@ -20,7 +20,7 @@ CardMeal.propTypes = {
   oneMeal: PropTypes.isRequired,
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  shortDesc: PropTypes.string.isRequired,
+  short_desc: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
 };
 
