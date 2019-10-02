@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
 
+
 }
 
 .popup-background{
@@ -23,6 +24,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .popup-img-container{
