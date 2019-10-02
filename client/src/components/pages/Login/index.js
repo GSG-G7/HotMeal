@@ -68,7 +68,7 @@ export default class Login extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <input
             value={tableNumber}
-            className="login__table-number"
+            className="input login__table-number"
             placeholder="Table number"
             name="tableNumber"
             onChange={this.setTableNumber}
@@ -76,7 +76,7 @@ export default class Login extends React.Component {
           <hr className="login__first-line" />
           <input
             value={secret}
-            className="login__secret-number"
+            className="input login__secret-number"
             type="password"
             placeholder="Secret key"
             name="secret"

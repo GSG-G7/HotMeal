@@ -24,9 +24,11 @@ class MenuPage extends React.Component {
     fetch(`/api/v1/meals?category=${cat}`)
       .then(res => res.json())
       .then(result => {
-        this.setState({
-          data: result.data,
-        });
+        if (result.data) {
+          this.setState({
+            data: result.data,
+          });
+        }
       })
       .then(this.changeStateCat())
       .catch(() => history.push('/serverError'));
