@@ -10,6 +10,9 @@
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
 }
+.detailsHeader{
+    margin-right:10px;
+}
 .mealName{
     width: 100%;
     height: 6vh;
@@ -105,8 +108,9 @@ color:#ED6707;
     flex-direction: column;
     justify-content: space-around;
 }
-input{
-    margin: 5px;
+.quantity{
+    width: 100%;
+    background: #fff;
 }
 label{
     font-weight: normal;
@@ -124,13 +128,13 @@ label{
     color: #000000;
 
 }
-ul{
+.ingredients{
     width: 80%;
     list-style-type: circle;
     margin: 5px 20px;
 
 }
-li{
+.ingredients_item{
 
 font-family: Roboto;
 font-style: normal;

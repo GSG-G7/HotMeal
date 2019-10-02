@@ -1,47 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import imgMeal from '../../assets/shrimppizza.jpg';
 import Button from '../utils/Button';
 import './style.css';
 
-// eslint-disable-next-line no-unused-vars
-const Details = ({ state: { item } }) => {
+const Details = ({
+  location: {
+    state: { item },
+  },
+}) => {
+  console.log(item);
+
+  const { name, description, img, price, ingredients } = item;
+  const listIngredients = ingredients.map(ingredient => {
+    return <li className="ingredients_item">{ingredient}</li>;
+  });
+
   return (
     <div className="details">
       <header className="header">
         <nav className="nav">
-          <div className="header__nav">
-            <Link to="/">
-              <i className="fas fa-arrow-left"></i>
+          <div className="detailsHeader header__nav">
+            <Link to="/meals">
+              <i className="back fas fa-arrow-left"></i>
             </Link>
             <span className="titel">Make your meal</span>
           </div>
         </nav>
       </header>
       <div className="mealName">
-        <h5 className="name">Shrimp Pasta</h5>
+        <h5 className="name">{name}</h5>
         <div className="price">
-          Price: <span className="val">25 NIS</span>
+          Price: <span className="val">{price}&nbsp;&nbsp;&nbsp;NIS</span>
         </div>
       </div>
-      <img src={imgMeal} alt="MealImage" className="imgMeal" />
+      <img src={img} alt="MealImage" className="imgMeal" />
       <div className="desc">
-        Description :
-        <p className="descMeal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo eveniet
-          sequi, repudiandae quaerat nobis voluptatem iusto nemo mollitia nam
-          possimus libero impedit magni blanditiis? Esse incidunt voluptatum
-          voluptate quae nisi.
-        </p>
+        Description :<p className="descMeal">{description}</p>
       </div>
 
       <div className="mainIngreddients">
-        Main Ingredients :
-        <ul className="ingredients">
-          <li>Shrimp</li>
-          <li>Spaghetti</li>
-        </ul>
+        Main Ingredients :<ul className="ingredients">{listIngredients}</ul>
       </div>
       <div className="editableIngradients">
         Editable Ingradients :
@@ -95,7 +94,12 @@ const Details = ({ state: { item } }) => {
         <div className="quantity">
           <label htmlFor="quantity">
             Quantity:
-            <input type="number" name="Quantity" id="quantity" />
+            <input
+              className="quantity"
+              type="number"
+              name="Quantity"
+              id="quantity"
+            />
           </label>
         </div>
         <div className="btns">
@@ -109,5 +113,6 @@ const Details = ({ state: { item } }) => {
 Details.propTypes = {
   item: PropTypes.isRequired,
   state: PropTypes.isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 export default Details;
