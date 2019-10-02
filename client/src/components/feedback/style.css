@@ -60,6 +60,8 @@
   height: 45.33px;
   font-size: 0.75rem;
   padding: .2rem;
+  position: unset;
+  color:black;
   padding-left: .5rem;
 } 
 .feedback{
@@ -71,6 +73,7 @@
   font-size: 0.75rem;
   padding-left: .5rem;
 }
+
 .container_star{
   position: absolute;
   right: 50%;
