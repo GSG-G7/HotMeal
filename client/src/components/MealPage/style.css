@@ -8,6 +8,10 @@
     border-radius: 8px;
     align-items: center;
 }
+.link{
+    text-decoration-line: none;
+    color: #000;
+}
 .categoryName{
     text-transform: capitalize;
 }

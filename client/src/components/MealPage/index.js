@@ -93,7 +93,9 @@ class MenuPage extends React.Component {
         {this.renderCategory()}
         <MealList data={data} />
         <span className="float">
-          <i className="fa fa-plus my-float"></i>
+          <Link className="link white" to="/order">
+            <i className="fa my-float">Order</i>
+          </Link>
         </span>
       </div>
     );
