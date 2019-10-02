@@ -10,8 +10,8 @@ export default class App extends React.Component {
     tableNumber: null,
   };
 
-  updateTableNumber = e => {
-    this.setState({ tableNumber: e });
+  updateTableNumber = (tableNumber, redirect) => {
+    this.setState({ tableNumber }, () => redirect('/'));
   };
 
   render() {
@@ -21,7 +21,7 @@ export default class App extends React.Component {
           <Route
             exact
             path="/login"
-            component={props => (
+            render={props => (
               <Login updateTableNumber={this.updateTableNumber} {...props} />
             )}
           />

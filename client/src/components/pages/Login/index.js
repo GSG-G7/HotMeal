@@ -8,9 +8,9 @@ import './style.css';
 
 export default class Login extends React.Component {
   state = {
-    tableNumber: null,
+    tableNumber: '',
     secret: '',
-    err: null,
+    err: '',
   };
 
   setTableNumber = e => {
@@ -37,12 +37,11 @@ export default class Login extends React.Component {
           }),
         });
       })
-      .then(res => {
+      .then((res => {
         if (res.status === 200) {
-          updateTableNumber(tableNumber);
-          history.push('/');
-        }
-        return this.setState({ err: 'Incorrect Table Number or Secret' });
+          updateTableNumber(tableNumber, history.push);
+        } else
+          return this.setState({ err: 'Incorrect Table Number or Secret' });
       })
       .catch(err => {
         if (err.details) {
@@ -95,6 +94,6 @@ export default class Login extends React.Component {
 }
 
 Login.propTypes = {
-  history: propTypes.isRequired,
+  history: propTypes.objectOf(propTypes.any).isRequired,
   updateTableNumber: propTypes.func.isRequired,
 };
