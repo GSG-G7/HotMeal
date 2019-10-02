@@ -20,7 +20,13 @@ export default class FeedbackComponent extends React.Component {
   newRate = newR => this.setState({ rate: newR });
 
   sendFeedback = () => {
-    const { history, orderId } = this.props;
+    const {
+      location: {
+        state: { orderId },
+      },
+    } = this.props;
+
+    const { history } = this.props;
     const { email, content: feedback } = this.state;
     const data = {
       orderId,
@@ -114,4 +120,5 @@ export default class FeedbackComponent extends React.Component {
 FeedbackComponent.propTypes = {
   history: propTypes.objectOf(propTypes.any).isRequired,
   orderId: propTypes.number.isRequired,
+  location: propTypes.objectOf(propTypes.any).isRequired,
 };
