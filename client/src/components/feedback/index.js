@@ -21,19 +21,26 @@ export default class FeedbackComponent extends React.Component {
 
   sendFeedback = () => {
     const {
+      location: { state },
+    } = this.props;
+
+    const { history } = this.props;
+    if (!state) {
+      history.push('/');
+      return '';
+    }
+    const {
       location: {
         state: { orderId },
       },
     } = this.props;
-
-    const { history } = this.props;
     const { email, content: feedback } = this.state;
     const data = {
       orderId,
       email,
       feedback,
     };
-    schemad
+    return schemad
       .validateAsync(data)
       .then(() =>
         fetch('/api/v1/post-feedback', {
