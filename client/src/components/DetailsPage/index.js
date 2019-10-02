@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import imgMeal from '../../assets/shrimppizza.jpg';
 import Button from '../utils/Button';
 import './style.css';
@@ -9,7 +11,9 @@ const Details = () => {
       <header className="header">
         <nav className="nav">
           <div className="header__nav">
-            <i className="fas fa-arrow-left"></i>
+            <Link to="/">
+              <i className="fas fa-arrow-left"></i>
+            </Link>
             <span className="titel">Make your meal</span>
           </div>
         </nav>

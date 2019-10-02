@@ -1,11 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import DetailsPage from '../DetailsPage';
+import Error404 from '../utils/Error404/index';
 import './style.css';
 
 export default () => {
   return (
-    <div className="pageDetalis">
-      <DetailsPage />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/details" component={DetailsPage} />
+        <Route exact path="*" component={Error404} />
+      </Switch>
+    </Router>
   );
 };

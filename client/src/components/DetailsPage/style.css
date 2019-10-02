@@ -95,16 +95,13 @@ color:#ED6707;
 .quantity{
     margin-top: 26px;
 }
-/* .select{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
+
 .btns{
     width: 100vw;
     height: 13vh;
     margin-top: 10px;
     display: flex;
+    margin: 10px auto;
     flex-direction: column;
     justify-content: space-around;
 }
