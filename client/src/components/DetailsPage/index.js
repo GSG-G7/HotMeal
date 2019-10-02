@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import imgMeal from '../../assets/shrimppizza.jpg';
 import Button from '../utils/Button';
 import './style.css';
 
-const Details = () => {
+// eslint-disable-next-line no-unused-vars
+const Details = ({ state: { item } }) => {
   return (
     <div className="details">
       <header className="header">
@@ -104,5 +105,9 @@ const Details = () => {
       </div>
     </div>
   );
+};
+Details.propTypes = {
+  item: PropTypes.isRequired,
+  state: PropTypes.isRequired,
 };
 export default Details;
