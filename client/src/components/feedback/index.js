@@ -43,9 +43,8 @@ export default class FeedbackComponent extends React.Component {
           : this.setState({ errorMessage: payload.error });
       })
       .catch(err => {
-        const error = JSON.parse(JSON.stringify(err));
-        if (error.details[0]) {
-          this.setState({ errorMessage: error.details[0].message });
+        if (err.details[0]) {
+          this.setState({ errorMessage: err.details[0].message });
         } else {
           history.push('/serverError');
         }
