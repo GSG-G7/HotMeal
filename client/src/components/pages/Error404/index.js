@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import error404 from '../../../assets/images/error.jpg';
-import Button from '../Button/index';
+import Button from '../../utils/Button/index';
 import './style.css';
 
 const Error404 = () => {
