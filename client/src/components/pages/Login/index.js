@@ -25,7 +25,7 @@ export default class Login extends React.Component {
     e.preventDefault();
     const { tableNumber, secret } = this.state;
     const { history, updateTableNumber } = this.props;
-    logInSchema
+    return logInSchema
       .validateAsync({ tableNumber, secret })
       .then(() => {
         return fetch('/api/v1/login', {
@@ -37,11 +37,11 @@ export default class Login extends React.Component {
           }),
         });
       })
-      .then((res => {
+      .then(res => {
         if (res.status === 200) {
-          updateTableNumber(tableNumber, history.push);
-        } else
-          return this.setState({ err: 'Incorrect Table Number or Secret' });
+          return updateTableNumber(tableNumber, history.push);
+        }
+        return this.setState({ err: 'Incorrect Table Number or Secret' });
       })
       .catch(err => {
         if (err.details) {
