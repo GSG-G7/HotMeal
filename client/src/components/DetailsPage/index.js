@@ -9,8 +9,6 @@ const Details = ({
     state: { item },
   },
 }) => {
-  console.log(item);
-
   const { name, description, img, price, ingredients } = item;
   const listIngredients = ingredients.map(ingredient => {
     return <li className="ingredients_item">{ingredient}</li>;
