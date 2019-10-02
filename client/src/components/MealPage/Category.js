@@ -10,7 +10,7 @@ const Category = ({ fetchMeals }) => {
           <i
             className="category_icon white fas fa-turkey"
             tabIndex={0}
-            onClick={() => fetchMeals('Desserts')}
+            onClick={() => fetchMeals('desserts')}
             role="button"
             onKeyPress={key => key}
           >
@@ -21,7 +21,7 @@ const Category = ({ fetchMeals }) => {
           <i
             className="category_icon white fas fa-turkey"
             tabIndex={0}
-            onClick={() => fetchMeals('Breakfast')}
+            onClick={() => fetchMeals('breakfast')}
             role="button"
             onKeyPress={key => key}
           >
@@ -32,7 +32,7 @@ const Category = ({ fetchMeals }) => {
           <i
             className="category_icon white fas fa-turkey"
             tabIndex={0}
-            onClick={() => fetchMeals('Drinks')}
+            onClick={() => fetchMeals('drinks')}
             role="button"
             onKeyPress={key => key}
           >
@@ -43,18 +43,18 @@ const Category = ({ fetchMeals }) => {
           <i
             className="category_icon white fas fa-turkey"
             tabIndex={0}
-            onClick={() => fetchMeals('Sandwishes')}
+            onClick={() => fetchMeals('sandwishes')}
             role="button"
             onKeyPress={key => key}
           >
-            Sandwishes
+            Sandwiches
           </i>
         </li>
         <li>
           <i
             className="category_icon white fas fa-turkey"
             tabIndex={0}
-            onClick={() => fetchMeals('Main')}
+            onClick={() => fetchMeals('main')}
             role="button"
             onKeyPress={key => key}
           >

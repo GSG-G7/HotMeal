@@ -8,7 +8,7 @@ export default () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/meals" component={MenuPage} />
+        <Route path="/meals" component={MenuPage} />
         <Route exact path="*" component={Error404} />
       </Switch>
     </Router>

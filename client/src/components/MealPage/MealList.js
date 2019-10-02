@@ -4,6 +4,8 @@ import CardMeal from './CardMeal';
 import './style.css';
 
 const MealList = ({ data }) => {
+  console.log(data);
+
   const listItems = data.map(item => {
     return (
       <li>

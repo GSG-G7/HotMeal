@@ -10,19 +10,18 @@ import './style.css';
 class MenuPage extends React.Component {
   state = {
     showMenu: true,
-    category: 'main',
     data: [],
   };
 
   componentDidMount() {
-    const { category } = this.state;
-    this.fetchMeals(category);
+    this.fetchMeals('main');
   }
 
-  fetchMeals = category => {
+  fetchMeals = (cat = 'main') => {
     const { history } = this.props;
-    this.setState({ category });
-    fetch(`/api/v1/meals?category=${category}`)
+    history.push(`/meals?category=${cat}`);
+
+    fetch(`/api/v1/meals?category=${cat}`)
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -54,7 +53,11 @@ class MenuPage extends React.Component {
   };
 
   Header = () => {
-    const { category } = this.state;
+    const {
+      location: { search },
+    } = this.props;
+    const paramVal = new URLSearchParams(search);
+    const category = paramVal.get('category');
 
     return (
       <header className="header">
@@ -98,5 +101,7 @@ class MenuPage extends React.Component {
 }
 MenuPage.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
 export default MenuPage;
