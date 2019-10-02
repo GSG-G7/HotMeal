@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from '../utils/Login/index';
-import Error404 from '../utils/Error404/index';
+import Login from '../pages/Login/index';
+import Error404 from '../pages/Error404/index';
 import './style.css';
 
 export default class App extends React.Component {

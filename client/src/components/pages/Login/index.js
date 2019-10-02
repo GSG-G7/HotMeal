@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import logInSchema from '../../../validation/login';
-import Button from '../Button/index';
+import Button from '../../utils/Button/index';
 import background from '../../../assets/images/login.background.png';
 import waiter from '../../../assets/images/waiter.png';
 import './style.css';
