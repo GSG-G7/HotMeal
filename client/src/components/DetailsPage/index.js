@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../utils/Button';
+// import PopUp from '../utils/PopUp/index';
 import './style.css';
 
 class Details extends React.Component {
@@ -253,6 +254,7 @@ class Details extends React.Component {
   };
 
   render() {
+    const { updateOrderMeals, history } = this.props;
     const {
       location: {
         state: { item },
@@ -306,15 +308,19 @@ class Details extends React.Component {
             </label>
           </div>
           <div className="btns">
-            <Link
-              to={{
-                pathname: '/myOrder',
-                state: this.state,
-              }}
+            <Button
+              className="btn_order"
+              onClick={() => history.push('/MyOrder')}
             >
-              <Button className="btn_order">Show my order</Button>
-            </Link>
-            <Button className="btn_order">Add to my order</Button>
+              Show my order
+            </Button>
+
+            <Button
+              className="btn_order"
+              onClick={() => updateOrderMeals(this.state)}
+            >
+              Add to my order
+            </Button>
           </div>
         </div>
       </div>
@@ -326,5 +332,7 @@ Details.propTypes = {
   item: PropTypes.isRequired,
   state: PropTypes.isRequired,
   location: PropTypes.objectOf(PropTypes.any).isRequired,
+  updateOrderMeals: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 export default Details;

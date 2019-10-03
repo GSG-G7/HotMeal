@@ -11,10 +11,9 @@ const router = express.Router();
 
 router.post('/auth', isAuth);
 router.post('/login', login);
-router.get('/meals', getMeals);
 router.use(auth);
 router.post('/post-feedback', postFeedback);
+router.get('/meals', getMeals);
 router.post('/order', addOrder);
 router.get('/logout', logout);
-
 module.exports = router;
