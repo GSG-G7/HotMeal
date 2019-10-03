@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 export default class Auth extends React.Component {
   state = {
@@ -38,3 +39,7 @@ export default class Auth extends React.Component {
     return <div>{this.redirectTo()}</div>;
   }
 }
+Auth.propTypes = {
+  history: propTypes.objectOf(propTypes.any).isRequired,
+  component: propTypes.objectOf(propTypes.any).isRequired,
+};
