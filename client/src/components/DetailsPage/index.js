@@ -1,113 +1,327 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../utils/Button';
 import './style.css';
 
-const Details = ({
-  location: {
-    state: { item },
-  },
-}) => {
-  const { name, description, img, price, ingredients } = item;
-  const listIngredients = ingredients.map(ingredient => {
-    return <li className="ingredients_item">{ingredient}</li>;
-  });
+class Details extends React.Component {
+  state = {
+    id: 0,
+    amount: 0,
+    price: 0,
+    name: ' ',
+    vegetables: [],
+    fruits: [],
+    nuts: [],
+    sauce: 0,
+    salt: 0,
+    spices: 0,
+    sugar: 0,
+    isChecKedA: false,
+    isChecKedB: false,
+    isChecKedC: false,
+  };
 
-  return (
-    <div className="details">
-      <header className="header">
-        <nav className="nav">
-          <div className="detailsHeader header__nav">
-            <Link to="/meals">
-              <i className="back fas fa-arrow-left"></i>
-            </Link>
-            <span className="titel">Make your meal</span>
-          </div>
-        </nav>
-      </header>
-      <div className="mealName">
-        <h5 className="name">{name}</h5>
-        <div className="price">
-          Price: <span className="val">{price}&nbsp;&nbsp;&nbsp;NIS</span>
-        </div>
-      </div>
-      <img src={img} alt="MealImage" className="imgMeal" />
-      <div className="desc">
-        Description :<p className="descMeal">{description}</p>
-      </div>
+  removeEle = ele => {
+    const { vegetables } = this.state;
+    const index = vegetables.indexOf(ele);
+    if (index > -1) {
+      vegetables.splice(index, 1);
+      this.setState({ vegetables });
+    }
+  };
 
-      <div className="mainIngreddients">
-        Main Ingredients :<ul className="ingredients">{listIngredients}</ul>
-      </div>
-      <div className="editableIngradients">
-        Editable Ingradients :
-        <div className="optios">
-          <div className="vegetables select">
-            <div>- Vegetables</div>
-            <label htmlFor="capsicurm">
-              Capsicum
-              <input type="checkbox" value="Capsicurm" id="capsicurm" />
-            </label>
-            <label htmlFor="tomato">
-              Tomato
-              <input type="checkbox" value="Tomato" id="tomato" />
-            </label>
-            <label htmlFor="onions">
-              Onions
-              <input type="checkbox" value="Onions" id="onions" />
-            </label>
-          </div>
-          <div className="spices select">
-            <div>- Spices</div>
-            <label htmlFor="littel">
-              Littel
-              <input type="radio" value="Littel" id="littel" name="spice" />
-            </label>
-            <label htmlFor="meduim">
-              Meduim
-              <input type="radio" value="Meduim" name="spice" id="meduim" />
-            </label>
-            <label htmlFor="extra">
-              Extra
-              <input type="radio" value="Extra" name="spice" id="extra" />
-            </label>
-          </div>
-          <div className="salt select">
-            <div>-Salt</div>
+  setCheckedA = event => {
+    this.setState({ isChecKedA: event.target.checked });
+  };
+
+  setCheckedB = event => {
+    this.setState({ isChecKedB: event.target.checked });
+  };
+
+  setCheckedC = event => {
+    this.setState({ isChecKedC: event.target.checked });
+  };
+
+  optionsFun = category => {
+    const { isChecKedA, isChecKedB, isChecKedC } = this.state;
+
+    if (category === 'drinks' || category === 'desserts') {
+      return (
+        <div>
+          <div className=" select">
+            <div>- Sugar </div>
             <label htmlFor="littelS">
               Littel
-              <input type="radio" id="littelS" value="Littel" name="salt" />
+              <input
+                type="radio"
+                id="littelS"
+                value="Littel"
+                name="sugar"
+                onClick={() => {
+                  this.setState({
+                    sugar: 0,
+                  });
+                }}
+              />
             </label>
             <label htmlFor="meduimS">
               Meduim
-              <input type="radio" id="meduimS" value="Meduim" name="salt" />
+              <input
+                type="radio"
+                id="meduimS"
+                value="Meduim"
+                name="sugar"
+                onClick={() => {
+                  this.setState({
+                    sugar: 1,
+                  });
+                }}
+              />
             </label>
             <label htmlFor="extraS">
               Extra
-              <input type="radio" value="Extra" name="salt" />
+              <input
+                type="radio"
+                value="Extra"
+                name="sugar"
+                onClick={() => {
+                  this.setState({
+                    sugar: 2,
+                  });
+                }}
+              />
             </label>
           </div>
         </div>
-        <div className="quantity">
-          <label htmlFor="quantity">
-            Quantity:
+      );
+    }
+    return (
+      <div className="optios">
+        <div className="vegetables select">
+          <div>- Vegetables</div>
+          <label htmlFor="capsicurm">
+            Capsicum
             <input
-              className="quantity"
-              type="number"
-              name="Quantity"
-              id="quantity"
+              type="checkbox"
+              value="Capsicurm"
+              id="capsicurm"
+              checked={isChecKedA}
+              onChange={e => {
+                this.setCheckedA(e);
+                if (!isChecKedA) {
+                  this.setState(prev => ({
+                    vegetables: prev.vegetables.concat(['capsicurm']),
+                  }));
+                } else {
+                  this.removeEle('capsicurm');
+                }
+              }}
+            />
+          </label>
+          <label htmlFor="tomato">
+            Tomato
+            <input
+              type="checkbox"
+              value="Tomato"
+              id="tomato"
+              checked={isChecKedB}
+              onChange={e => {
+                this.setCheckedB(e);
+                if (!isChecKedB) {
+                  this.setState(prev => ({
+                    vegetables: prev.vegetables.concat(['tomato']),
+                  }));
+                } else {
+                  this.removeEle('tomato');
+                }
+              }}
+            />
+          </label>
+          <label htmlFor="onions">
+            Onions
+            <input
+              type="checkbox"
+              value="Onions"
+              id="onions"
+              checked={isChecKedC}
+              onChange={e => {
+                this.setCheckedC(e);
+                if (!isChecKedC) {
+                  this.setState(prev => ({
+                    vegetables: prev.vegetables.concat(['onions']),
+                  }));
+                } else {
+                  this.removeEle('onions');
+                }
+              }}
             />
           </label>
         </div>
-        <div className="btns">
-          <Button className="btn_order">Show my order</Button>
-          <Button className="btn_order">Add to my order</Button>
+        <div className="spices select">
+          <div>- Spices</div>
+          <label htmlFor="littel">
+            Littel
+            <input
+              type="radio"
+              value="Littel"
+              id="littel"
+              name="spice"
+              onClick={() => {
+                this.setState({
+                  spices: 0,
+                });
+              }}
+            />
+          </label>
+          <label htmlFor="meduim">
+            Meduim
+            <input
+              type="radio"
+              value="Meduim"
+              name="spice"
+              id="meduim"
+              onClick={() => {
+                this.setState({
+                  spices: 1,
+                });
+              }}
+            />
+          </label>
+          <label htmlFor="extra">
+            Extra
+            <input
+              type="radio"
+              value="Extra"
+              name="spice"
+              id="extra"
+              onClick={() => {
+                this.setState({
+                  spices: 2,
+                });
+              }}
+            />
+          </label>
+        </div>
+        <div className="salt select">
+          <div>-Salt</div>
+          <label htmlFor="littelS">
+            Littel
+            <input
+              type="radio"
+              id="littelS"
+              value="Littel"
+              name="salt"
+              onClick={() => {
+                this.setState({
+                  salt: 0,
+                });
+              }}
+            />
+          </label>
+          <label htmlFor="meduimS">
+            Meduim
+            <input
+              type="radio"
+              id="meduimS"
+              value="Meduim"
+              name="salt"
+              onClick={() => {
+                this.setState({
+                  salt: 1,
+                });
+              }}
+            />
+          </label>
+          <label htmlFor="extraS">
+            Extra
+            <input
+              type="radio"
+              value="Extra"
+              name="salt"
+              onClick={() => {
+                this.setState({
+                  salt: 2,
+                });
+              }}
+            />
+          </label>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+
+  render() {
+    const {
+      location: {
+        state: { item },
+      },
+    } = this.props;
+    const { category, name, description, img, price, ingredients } = item;
+    const listIngredients = ingredients.map(ingredient => {
+      return <li className="ingredients_item">{ingredient}</li>;
+    });
+    return (
+      <div className="details">
+        <header className="header">
+          <nav className="nav">
+            <div className="detailsHeader header__nav">
+              <Link to="/meals">
+                <i className="back fas fa-arrow-left"></i>
+              </Link>
+              <span className="titel">Make your meal</span>
+            </div>
+          </nav>
+        </header>
+        <div className="mealName">
+          <h5 className="name">{name}</h5>
+          <div className="price">
+            Price: <span className="val">{price}&nbsp;&nbsp;&nbsp;NIS</span>
+          </div>
+        </div>
+        <img src={img} alt="MealImage" className="imgMeal" />
+        <div className="desc">
+          Description :<p className="descMeal">{description}</p>
+        </div>
+
+        <div className="mainIngreddients">
+          Main Ingredients :<ul className="ingredients">{listIngredients}</ul>
+        </div>
+        <div className="editableIngradients">
+          Editable Ingradients :{this.optionsFun(category)}
+          <div className="quantity">
+            <label htmlFor="quantity">
+              Quantity:
+              <input
+                className="quantity"
+                type="number"
+                name="Quantity"
+                id="quantity"
+                onKeyDown={e =>
+                  // eslint-disable-next-line radix
+                  this.setState({ amount: parseInt(e.target.value) })
+                }
+              />
+            </label>
+          </div>
+          <div className="btns">
+            <Link
+              to={{
+                pathname: '/myOrder',
+                state: this.state,
+              }}
+            >
+              <Button className="btn_order">Show my order</Button>
+            </Link>
+            <Button className="btn_order">Add to my order</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 Details.propTypes = {
   item: PropTypes.isRequired,
   state: PropTypes.isRequired,

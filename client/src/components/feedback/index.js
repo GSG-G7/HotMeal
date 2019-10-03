@@ -89,7 +89,7 @@ export default class FeedbackComponent extends React.Component {
       <div>
         {this.feedbackPopUp()}
         <div className="bg">
-          <div className="card">
+          <div className="card-feedback">
             <h3 className="header-feedback"> feedback</h3>
             <div className="order-info">
               <div className="order-number">

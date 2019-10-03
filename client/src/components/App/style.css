@@ -14,10 +14,13 @@
   align-items: center;
 }
 .header__nav{
+  width: 100%;
   display: flex;
   list-style-type: none;
   flex-direction: row;
-  align-items: center;
+  line-height: 1rem;
+  padding: 5px 18px 0px 0;
+
 }
 .titel{
   font-weight: bold;
@@ -36,28 +39,23 @@
 .fas{
   color: #FFF;
 }
+.card_fas{
+  color: black;
+}
 .App {
   text-align: center;
-}
-.nav{
-  height: 3rem;
 }
 .header{
   width: 100%;
   background: #ED6707;
 }
-.header__nav{
-  display: flex;
-  flex-direction: row;
-  line-height: 1rem;
-  padding: 6px 0px 11px 0px;
-}
+
 .float{
 	position:fixed;
 	width:60px;
 	height:60px;
-	bottom:30px;
-	right:30px;
+  bottom: 50px;
+  right: 50px;
 	background-color:#ED6707;
 	color:#FFF;
 	border-radius:50px;

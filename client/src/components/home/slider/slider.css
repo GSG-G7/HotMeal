@@ -1,0 +1,43 @@
+.left{
+  text-align: center;
+}
+.left{
+  margin:0 2rem;
+  border-radius: 10rem;
+  opacity: .5;
+  display: inline;
+  outline: none;
+}
+
+.left:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+  .container{
+  width: 98vw;
+  height: 36vh;
+  align-items: center;
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-position: center; 
+  line-height: 35vh;
+  font-size: 2rem;
+  text-align: center;
+  display: inline-flex;
+  justify-content: space-between;  
+}
+.bg1{
+  background-image: url('../../../assets/Group 3.svg');
+}
+.bg2{
+  background-image: url('../../../assets/HotMeal/Rectangle-1.svg');
+}
+.bg3{
+  background-image: url('../../../assets/HotMeal/Rectangle-2.svg');
+}
+.bg4{
+  background-image: url('../../../assets/HotMeal/Rectangle.svg');
+}
+

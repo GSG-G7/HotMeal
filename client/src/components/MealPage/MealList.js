@@ -24,7 +24,7 @@ const MealList = ({ data }) => {
     });
     return <ul className="menu">{listItems}</ul>;
   }
-  return <ul className="menu"></ul>;
+  return '';
 };
 MealList.propTypes = {
   data: PropTypes.isRequired,
