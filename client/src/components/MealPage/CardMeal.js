@@ -11,7 +11,7 @@ const CardMeal = ({ oneMeal: { img, name, short_desc: shortDesc, price } }) => (
     </div>
 
     <div className="meal__icon">
-      <i className="fas card fa-angle-right"></i>
+      <i className=" card_fas fas  fa-angle-right"></i>
       <span className="meal__price">{price}</span>
     </div>
   </div>

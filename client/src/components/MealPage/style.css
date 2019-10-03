@@ -8,10 +8,16 @@
     border-radius: 8px;
     align-items: center;
 }
+.meal_card{
+    margin-left: 10px;
+}
 .link{
     text-decoration-line: none;
     color: #000;
+    margin: 0px 16px 5px 10px;
+
 }
+
 .categoryName{
     text-transform: capitalize;
 }
@@ -117,8 +123,12 @@ font-weight: bold;
         color:white;
                
     }
-ul{
+.menu{
     list-style-type: none;
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
+    margin-top: 1rem;
 }
 .nav_item{
     margin: 10px 5px 9px 9px;

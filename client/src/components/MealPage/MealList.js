@@ -16,7 +16,7 @@ const MealList = ({ data }) => {
             state: { item },
           }}
         >
-          <li>
+          <li className="meal_card">
             <CardMeal key={item.id} oneMeal={item} />
           </li>
         </Link>
