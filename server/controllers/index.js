@@ -9,9 +9,9 @@ const getMeals = require('./getMeals');
 const router = express.Router();
 
 router.post('/login', login);
-router.use(auth);
 router.post('/post-feedback', postFeedback);
 router.get('/meals', getMeals);
 router.post('/order', addOrder);
 router.get('/logout', logout);
+router.use(auth);
 module.exports = router;

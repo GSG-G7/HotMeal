@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   let allMeals;
   orderSchema
     .validateAsync({
-      ...req.body, tableNumber: req.user.tableNumber,
+      ...req.body, tableNumber: 1,
     })
     .then((data) => {
       const {
