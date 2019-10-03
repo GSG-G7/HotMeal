@@ -1,0 +1,150 @@
+.pageDetalis{
+    width: 100%;
+}
+.btn_order{
+    width: 80vw;
+    height: 28.13px;
+    background: #ED6707;
+    color: #fff;
+    margin: auto;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+}
+.detailsHeader{
+    margin-right:10px;
+}
+.mealName{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+.name {
+    width: 35%;
+    font-family: Lato;
+    font-style: normal;
+    
+    font-weight: 600;
+    font-size: 18px;
+    color: #000000;
+}
+.price {
+    width: 35%;
+    height: 1vh;
+    font-family: lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    text-align: center;
+
+}
+.val{
+font-family: lato;
+font-style: normal;
+font-weight: normal;
+font-size: 11px;
+color:#ED6707;
+}
+.imgMeal{
+    width: 90vw;
+    margin: 1rem auto;
+    margin-left: .5rem;
+    display: block;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 38px 38px;
+}
+.desc{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 18px;
+    padding: 5px;
+    color: #000000;
+}
+.descMeal{
+    width: 100%;
+    height: 10vh;
+    margin-top: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #333333;
+
+}
+.mainIngreddients{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 18px;
+    padding: 5px;
+    color: #000000;
+
+}
+.editableIngradients{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 18px;
+    margin: 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    color: #000000;
+}
+.quantity{
+    margin-top: 26px;
+}
+
+.btns{
+    width: 100vw;
+    height: 13vh;
+    margin-top: 10px;
+    display: flex;
+    margin: 10px auto;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.quantity{
+    width: 100%;
+    background: #fff;
+}
+label{
+    font-weight: normal;
+    margin-left:8px; 
+    margin-top: 2px;
+    float: left;
+}
+.optios{
+    width: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-size: 14px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-around;
+    color: #000000;
+
+}
+.select{
+    width: 30%;
+}
+.ingredients{
+    width: 80%;
+    list-style-type: circle;
+    margin: 5px 20px;
+
+}
+.ingredients_item{
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+}
+
+
