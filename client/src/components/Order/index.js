@@ -170,12 +170,7 @@ export default class Order extends React.Component {
         {this.showPopup()}
         <header className="header">
           <p>
-            <img
-              src={backArrow}
-              alt="back"
-              className="arrow"
-              onClick={() => history.push('/')}
-            />
+            <img src={backArrow} alt="back" className="arrow" />
             <span className="p__my-order">My Order</span>
             <span className="p__cancel">Cancel</span>
           </p>
