@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Slider from './slider/slider';
 import Button from '../utils/Button';
 import Pop from '../utils/PopUp';
-
 import './style.css';
 
 class Home extends Component {
@@ -46,7 +46,10 @@ class Home extends Component {
 
   render() {
     const { history } = this.props;
-
+    const {
+      location: { pathname },
+    } = this.props;
+    const orderId = Number(pathname.slice(1));
     const logout = () => {
       fetch('/api/v1/logout')
         .then(res => res.json())
@@ -80,12 +83,16 @@ class Home extends Component {
             </Button>
           </div>
           <div>
-            <Button
-              className="bage__buttons_button"
-              onClick={() => history.push('/feedback')}
+            <Link
+              to={{
+                pathname: '/feedback',
+                state: {
+                  orderId,
+                },
+              }}
             >
-              Feedback
-            </Button>
+              <Button className="bage__buttons_button">Feedback</Button>
+            </Link>
           </div>
           <div>
             <Button className="logout bage__buttons_button" onClick={logout}>
@@ -100,6 +107,7 @@ class Home extends Component {
 
 Home.propTypes = {
   history: propTypes.objectOf(propTypes.any).isRequired,
+  location: propTypes.objectOf(propTypes.any).isRequired,
 };
 
 export default Home;

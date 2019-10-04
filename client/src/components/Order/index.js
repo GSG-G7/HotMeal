@@ -13,9 +13,10 @@ export default class Order extends React.Component {
     popUpError: false,
     submitted: false,
     totalPrice: 0,
+    orderId: null,
     meals: [],
     //   {
-    //     mealId: 1,
+    //     id: 1,
     //     amount: 2,
     //     price: 4.02,
     //     salt: 1,
@@ -24,7 +25,7 @@ export default class Order extends React.Component {
     //   },
 
     //   {
-    //     mealId: 3,
+    //     id: 3,
     //     vegetables: ['f', 'b'],
     //     fruits: ['f', 'b'],
     //     nuts: ['f', 'b'],
@@ -36,7 +37,7 @@ export default class Order extends React.Component {
     //     price: 10,
     //   },
     //   {
-    //     mealId: 2,
+    //     id: 2,
     //     vegetables: ['f', 'b'],
     //     fruits: ['f', 'b'],
     //     nuts: ['f', 'b'],
@@ -111,6 +112,7 @@ export default class Order extends React.Component {
   onClickSubmit = () => {
     const { totalPrice, meals } = this.state;
     const { history, tableNumber, updateOrderMeals } = this.props;
+
     fetch('api/v1/order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -121,23 +123,25 @@ export default class Order extends React.Component {
         tableNumber,
       }),
     })
-      .then(res => {
-        if (res.status === 201) {
+      .then(res => res.json())
+      .then(res1 => {
+        if (res1.statusCode === 201) {
           this.setState({ popUpSubmit: true });
           this.ToggleStatus();
-          this.setState({ meals: [] });
+          this.setState({ meals: [], orderId: res1.data.orderId });
           updateOrderMeals([]);
         }
-
-        if (res.body.statusCode === 422) {
+        if (res1.statusCode === 422) {
           this.setState({ popUpError: true });
         }
       })
-      .catch(() => history.push('/serverError'));
+      .catch(() => {
+        history.push('/serverError');
+      });
   };
 
   showPopup = () => {
-    const { popUpSubmit, popUpError } = this.state;
+    const { popUpSubmit, popUpError, orderId } = this.state;
     const { history } = this.props;
     if (popUpSubmit) {
       return (
@@ -145,7 +149,7 @@ export default class Order extends React.Component {
           message="You order is submitted successfully"
           is2btnNeeded={false}
           btnName1="OK"
-          onClick1={() => history.push('/')}
+          onClick1={() => history.push(`/${orderId}`)}
         />
       );
     }
@@ -169,11 +173,15 @@ export default class Order extends React.Component {
       <div>
         {this.showPopup()}
         <header className="header">
-          <p>
+          <div>
             <img src={backArrow} alt="back" className="arrow" />
+          </div>
+          <div>
             <span className="p__my-order">My Order</span>
+          </div>
+          <div>
             <span className="p__cancel">Cancel</span>
-          </p>
+          </div>
         </header>
         <div className="">
           <table>
@@ -184,7 +192,7 @@ export default class Order extends React.Component {
             </tr>
             {meals.map(meal => {
               return (
-                <tr key={meal.mealId}>
+                <tr key={meal.id}>
                   <td>{meal.name}</td>
                   <td>{meal.amount}</td>
                   <td>{meal.price}</td>

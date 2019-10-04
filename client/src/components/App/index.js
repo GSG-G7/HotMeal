@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MenuPage from '../MealPage';
@@ -16,7 +15,7 @@ export default class App extends React.Component {
     tableNumber: 2,
     orderMeals: [
       {
-        mealId: 1,
+        id: 1,
         amount: 2,
         price: 4.02,
         salt: 1,
@@ -69,10 +68,10 @@ export default class App extends React.Component {
               />
             )}
           />
-          <ProtectedPage exact path="/" component={Home} />
           <ProtectedPage exact path="/feedback" component={Feedback} />
           <ProtectedPage path="/meals" component={MenuPage} />
-          <Route exact path="*" component={Error404} />
+          <ProtectedPage path="/" component={Home} />
+          <Route path="*" component={Error404} />
         </Switch>
       </Router>
     );

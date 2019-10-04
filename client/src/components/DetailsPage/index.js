@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../utils/Button';
-// import PopUp from '../utils/PopUp/index';
+
 import './style.css';
 
 class Details extends React.Component {
@@ -23,6 +23,16 @@ class Details extends React.Component {
     isChecKedB: false,
     isChecKedC: false,
   };
+
+  componentDidMount() {
+    const {
+      location: {
+        state: { item },
+      },
+    } = this.props;
+    const { name, price, id } = item;
+    this.setState({ name, price, id });
+  }
 
   removeEle = ele => {
     const { vegetables } = this.state;
@@ -51,7 +61,7 @@ class Details extends React.Component {
     if (category === 'drinks' || category === 'desserts') {
       return (
         <div>
-          <div className=" select">
+          <div className="select">
             <div>- Sugar </div>
             <label htmlFor="littelS">
               Littel
@@ -300,7 +310,7 @@ class Details extends React.Component {
                 type="number"
                 name="Quantity"
                 id="quantity"
-                onKeyDown={e =>
+                onChange={e =>
                   // eslint-disable-next-line radix
                   this.setState({ amount: parseInt(e.target.value) })
                 }
