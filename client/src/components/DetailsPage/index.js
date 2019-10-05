@@ -1,9 +1,8 @@
-/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../utils/Button';
-// import PopUp from '../utils/PopUp/index';
+import PupUp from '../utils/PopUp';
 import './style.css';
 
 class Details extends React.Component {
@@ -22,7 +21,18 @@ class Details extends React.Component {
     isChecKedA: false,
     isChecKedB: false,
     isChecKedC: false,
+    isAdded: null,
   };
+
+  componentDidMount() {
+    const {
+      location: {
+        state: { item },
+      },
+    } = this.props;
+    const { name, price, id } = item;
+    this.setState({ name, price, id });
+  }
 
   removeEle = ele => {
     const { vegetables } = this.state;
@@ -51,7 +61,7 @@ class Details extends React.Component {
     if (category === 'drinks' || category === 'desserts') {
       return (
         <div>
-          <div className=" select">
+          <div className="select">
             <div>- Sugar </div>
             <label htmlFor="littelS">
               Littel
@@ -253,6 +263,21 @@ class Details extends React.Component {
     );
   };
 
+  AddedNotification = () => {
+    const { isAdded } = this.state;
+    if (isAdded) {
+      return (
+        <PupUp
+          is2btnNeeded={false}
+          btnName1="ok"
+          message="the meal is added to order"
+          onClick1={() => this.setState({ isAdded: null })}
+        />
+      );
+    }
+    return '';
+  };
+
   render() {
     const { updateOrderMeals, history } = this.props;
     const {
@@ -266,6 +291,7 @@ class Details extends React.Component {
     });
     return (
       <div className="details">
+        {this.AddedNotification()}
         <header className="header">
           <nav className="nav">
             <div className="detailsHeader header__nav">
@@ -300,7 +326,7 @@ class Details extends React.Component {
                 type="number"
                 name="Quantity"
                 id="quantity"
-                onKeyDown={e =>
+                onChange={e =>
                   // eslint-disable-next-line radix
                   this.setState({ amount: parseInt(e.target.value) })
                 }
@@ -317,7 +343,10 @@ class Details extends React.Component {
 
             <Button
               className="btn_order"
-              onClick={() => updateOrderMeals(this.state)}
+              onClick={() => {
+                this.setState({ isAdded: true });
+                return updateOrderMeals(this.state);
+              }}
             >
               Add to my order
             </Button>

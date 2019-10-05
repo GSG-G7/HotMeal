@@ -1,5 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line import/no-unresolved
 import ReactStars from 'react-stars';
 import propTypes from 'prop-types';
 import Button from '../utils/Button';

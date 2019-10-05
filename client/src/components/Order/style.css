@@ -1,20 +1,23 @@
 .header{
   background: #ED6707;
   padding: 0.6rem;
+  display: flex;
   margin-bottom: 2rem;
   line-height: 1.7rem;
   font-family: Lato, sans-serif;
   color: beige;
   font-weight: bold;
+  width: 100vh;
+}
+.p__my-order{
+  margin: auto 1rem;
 }
 .arrow{
   margin: -0.35rem auto;
 }
-.p__my-order{
-  margin-left: 1rem;
-}
+
 .p__cancel{
-  margin-left: 62vw;
+  margin-left: 57vw;
 }
 
 .order__button{

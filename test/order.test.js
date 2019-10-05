@@ -11,7 +11,7 @@ test('test success for /order', (t) => {
       totalPrice: 44.05,
 
       meals: [{
-        mealId: 1, amount: 2, price: 4.02, salt: 1, spices: 0, vegetables: ['t', 'b'],
+        id: 1, amount: 2, price: 4.02, salt: 1, spices: 0, vegetables: ['t', 'b'],
       }],
     })
     .expect(201)
@@ -20,7 +20,7 @@ test('test success for /order', (t) => {
       if (err) {
         t.error(err);
       } else {
-        t.deepEquals(res.body, { statusCode: 201, message: 'Insertion order success' }, 'Status code should be 201');
+        t.deepEquals(res.body.statusCode, 201, 'Status code should be 201');
       }
 
       t.end();
