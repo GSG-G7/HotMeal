@@ -17,6 +17,7 @@ module.exports = Joi.object().keys({
       sugar: Joi.number().valid(0, 1, 2),
       amount: Joi.number().integer().min(1).required(),
       price: Joi.number().min(0).required(),
+      isAdded: Joi.any(),
       isChecKedA: Joi.boolean(),
       isChecKedC: Joi.boolean(),
       isChecKedB: Joi.boolean(),

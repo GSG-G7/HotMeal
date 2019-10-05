@@ -15,40 +15,6 @@ export default class Order extends React.Component {
     totalPrice: 0,
     orderId: null,
     meals: [],
-    //   {
-    //     id: 1,
-    //     amount: 2,
-    //     price: 4.02,
-    //     salt: 1,
-    //     spices: 0,
-    //     vegetables: ['t', 'b'],
-    //   },
-
-    //   {
-    //     id: 3,
-    //     vegetables: ['f', 'b'],
-    //     fruits: ['f', 'b'],
-    //     nuts: ['f', 'b'],
-    //     sauce: 0,
-    //     salt: 0,
-    //     spices: 0,
-    //     sugar: 0,
-    //     amount: 2,
-    //     price: 10,
-    //   },
-    //   {
-    //     id: 2,
-    //     vegetables: ['f', 'b'],
-    //     fruits: ['f', 'b'],
-    //     nuts: ['f', 'b'],
-    //     sauce: 0,
-    //     salt: 0,
-    //     spices: 0,
-    //     sugar: 0,
-    //     amount: 1,
-    //     price: 10,
-    //   },
-    // ],
   };
 
   componentWillUnmount = () => {
@@ -64,29 +30,11 @@ export default class Order extends React.Component {
   };
 
   addMeals = () => {
-    // const { history } = this.props;
     const { prevMeals, meal } = this.props;
     const { meals } = this.state;
-    // alert(JSON.stringify(prevMeals));
-    // const {
-    //   location: { state },
-    // } = this.props;
-    // if (!state) {
-    //   history.push('/meals');
-    //   return '';
-    // }
-    // const {
-    //   location: {
-    //     state: { meal },
-    //   },
-    //   prevMeals,
-    // } = this.props;
-
     const updatedMeals = meals.concat(prevMeals);
     if (meal) updatedMeals.push(meal);
     this.setState({ meals: updatedMeals });
-
-    return '';
   };
 
   updateTotalPrice = () => {
@@ -168,12 +116,18 @@ export default class Order extends React.Component {
 
   render() {
     const { totalPrice, meals } = this.state;
+    const { history } = this.props;
 
     return (
       <div>
         {this.showPopup()}
         <header className="header">
-          <div>
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => history.push('/meals')}
+            onKeyDown={k => k}
+          >
             <img src={backArrow} alt="back" className="arrow" />
           </div>
           <div>
@@ -223,7 +177,6 @@ export default class Order extends React.Component {
 
 Order.propTypes = {
   history: propTypes.objectOf(propTypes.any).isRequired,
-  // location: propTypes.objectOf(propTypes.any).isRequired,
   updateOrderMeals: propTypes.func.isRequired,
   prevMeals: propTypes.arrayOf(Object).isRequired,
   tableNumber: propTypes.number.isRequired,
