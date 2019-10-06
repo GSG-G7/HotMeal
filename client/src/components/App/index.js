@@ -8,29 +8,30 @@ import Error404 from '../pages/Error404/index';
 import ProtectedPage from '../Auth/Auth';
 import Home from '../home';
 import Order from '../Order/index';
+
 import './style.css';
 
 export default class App extends React.Component {
   state = {
-    tableNumber: 2,
-    orderMeals: [
-      {
-        id: 1,
-        amount: 2,
-        price: 4.02,
-        salt: 1,
-        spices: 0,
-        vegetables: ['t', 'b'],
-      },
-    ],
+    tableNumber: 0,
+    orderMeals: [],
   };
 
   updateTableNumber = (tableNumber, redirect) => {
     this.setState({ tableNumber }, () => redirect('/'));
   };
 
-  updateOrderMeals = orderMeals => {
-    this.setState({ orderMeals });
+  updateOrderMeals = newOrderMeals => {
+    const { orderMeals } = this.state;
+    this.setState({ orderMeals: orderMeals.concat(newOrderMeals) });
+  };
+
+  deleteOrder = () => {
+    this.setState({ orderMeals: [] });
+  };
+
+  setOrderMeals = newMeals => {
+    this.setState({ orderMeals: newMeals });
   };
 
   render() {
@@ -50,9 +51,10 @@ export default class App extends React.Component {
             path="/MyOrder"
             render={props => (
               <Order
-                updateOrderMeals={this.updateOrderMeals}
                 tableNumber={tableNumber}
                 prevMeals={orderMeals}
+                deleteOrder={this.deleteOrder}
+                setOrderMeals={this.setOrderMeals}
                 {...props}
               />
             )}
@@ -68,9 +70,14 @@ export default class App extends React.Component {
               />
             )}
           />
-          <ProtectedPage exact path="/feedback" component={Feedback} />
+          <ProtectedPage
+            exact
+            path="/feedback"
+            render={props => <Feedback tableNumber={tableNumber} {...props} />}
+          />
           <ProtectedPage path="/meals" component={MenuPage} />
           <ProtectedPage path="/" component={Home} />
+          <Route path="/serverError" render={<h1>Server Error :( </h1>} />
           <Route path="*" component={Error404} />
         </Switch>
       </Router>

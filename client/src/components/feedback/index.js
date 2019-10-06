@@ -82,7 +82,13 @@ export default class FeedbackComponent extends React.Component {
   };
 
   render() {
-    const { history } = this.props;
+    const {
+      location: {
+        state: { orderId },
+      },
+      history,
+      tableNumber,
+    } = this.props;
     const { rate, errorMessage, email, content } = this.state;
 
     return (
@@ -93,11 +99,11 @@ export default class FeedbackComponent extends React.Component {
             <h3 className="header-feedback"> feedback</h3>
             <div className="order-info">
               <div className="order-number">
-                <p> 23</p>
+                <p>{orderId}</p>
                 <h4>Order</h4>
               </div>
               <div className="table-number">
-                <p>5</p>
+                <p>{tableNumber}</p>
                 <h4>Table</h4>
               </div>
             </div>
@@ -148,5 +154,6 @@ export default class FeedbackComponent extends React.Component {
 FeedbackComponent.propTypes = {
   history: propTypes.objectOf(propTypes.any).isRequired,
   orderId: propTypes.number.isRequired,
+  tableNumber: propTypes.number.isRequired,
   location: propTypes.objectOf(propTypes.any).isRequired,
 };

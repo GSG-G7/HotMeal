@@ -11,45 +11,47 @@ export default class Order extends React.Component {
   state = {
     popUpSubmit: false,
     popUpError: false,
+    popUpCancel: false,
     submitted: false,
-    totalPrice: 0,
     orderId: null,
     meals: [],
-  };
-
-  componentWillUnmount = () => {
-    const { submitted } = this.state;
-    if (submitted) this.setState({ meals: [] });
-    const { meals } = this.state;
-    const { updateOrderMeals } = this.props;
-    updateOrderMeals(meals);
   };
 
   componentDidMount = () => {
     this.addMeals();
   };
 
-  addMeals = () => {
-    const { prevMeals, meal } = this.props;
+  componentWillUnmount = () => {
+    const { setOrderMeals } = this.props;
     const { meals } = this.state;
-    const updatedMeals = meals.concat(prevMeals);
-    if (meal) updatedMeals.push(meal);
-    this.setState({ meals: updatedMeals });
+    setOrderMeals(meals);
   };
 
-  updateTotalPrice = () => {
-    const { meals } = this.state;
+  addMeals = () => {
+    const { prevMeals } = this.props;
+    this.setState({ meals: prevMeals });
+  };
+
+  updateTotalPrice = meals => {
     if (meals.length) {
-      const total = meals.reduce((result, meal) => {
-        return result + meal.price;
-      });
-      this.setState({ totalPrice: total });
+      const total = meals.reduce((sum, meal) => {
+        return sum + meal.price * meal.amount;
+      }, 0);
+      return total;
     }
+    return null;
   };
 
   ToggleStatus = () => {
     const { submitted } = this.state;
     this.setState({ submitted: !submitted });
+  };
+
+  removeMeal = key => {
+    const { meals } = this.state;
+    this.setState({
+      meals: meals.filter(el => el.id !== key),
+    });
   };
 
   onClickAdd = () => {
@@ -58,15 +60,15 @@ export default class Order extends React.Component {
   };
 
   onClickSubmit = () => {
-    const { totalPrice, meals } = this.state;
-    const { history, tableNumber, updateOrderMeals } = this.props;
+    const { meals } = this.state;
+    const { history, tableNumber, deleteOrder, prevMeals } = this.props;
 
     fetch('api/v1/order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         createdAt: Date.now(),
-        totalPrice,
+        totalPrice: this.updateTotalPrice(prevMeals),
         meals,
         tableNumber,
       }),
@@ -77,7 +79,7 @@ export default class Order extends React.Component {
           this.setState({ popUpSubmit: true });
           this.ToggleStatus();
           this.setState({ meals: [], orderId: res1.data.orderId });
-          updateOrderMeals([]);
+          deleteOrder();
         }
         if (res1.statusCode === 422) {
           this.setState({ popUpError: true });
@@ -89,8 +91,8 @@ export default class Order extends React.Component {
   };
 
   showPopup = () => {
-    const { popUpSubmit, popUpError, orderId } = this.state;
-    const { history } = this.props;
+    const { popUpSubmit, popUpError, orderId, popUpCancel } = this.state;
+    const { history, deleteOrder } = this.props;
     if (popUpSubmit) {
       return (
         <PopUp
@@ -111,12 +113,28 @@ export default class Order extends React.Component {
         />
       );
     }
+    if (popUpCancel) {
+      return (
+        <PopUp
+          message="You will cancel the whole order, are you sure?"
+          is2btnNeeded
+          btnName1="Yes"
+          btnName2="back"
+          onClick1={() => {
+            deleteOrder();
+            return history.push('/');
+          }}
+          onClick2={() => this.setState({ popUpCancel: false })}
+        />
+      );
+    }
+
     return null;
   };
 
   render() {
-    const { totalPrice, meals } = this.state;
-    const { history } = this.props;
+    const { history, prevMeals } = this.props;
+    const { meals } = this.state;
 
     return (
       <div>
@@ -134,7 +152,14 @@ export default class Order extends React.Component {
             <span className="p__my-order">My Order</span>
           </div>
           <div>
-            <span className="p__cancel">Cancel</span>
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => this.setState({ popUpCancel: true })}
+              onKeyDown={k => k}
+            >
+              <span className="p__cancel">Cancel</span>
+            </div>
           </div>
         </header>
         <div className="">
@@ -150,13 +175,21 @@ export default class Order extends React.Component {
                   <td>{meal.name}</td>
                   <td>{meal.amount}</td>
                   <td>{meal.price}</td>
-                  <img src={cancel} alt="cancel" />
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => {
+                      this.removeMeal(meal.id);
+                    }}
+                    onKeyDown={k => k}
+                  >
+                    <img src={cancel} alt="cancel" />
+                  </div>
                 </tr>
               );
             })}
           </table>
-          {this.updateTotalPrice}
-          <span>Total= {totalPrice}</span>
+          <span>Total= {this.updateTotalPrice(prevMeals)} NIS</span>
         </div>
         <div className="order__button">
           <div>
@@ -177,8 +210,8 @@ export default class Order extends React.Component {
 
 Order.propTypes = {
   history: propTypes.objectOf(propTypes.any).isRequired,
-  updateOrderMeals: propTypes.func.isRequired,
-  prevMeals: propTypes.arrayOf(Object).isRequired,
+  deleteOrder: propTypes.func.isRequired,
+  setOrderMeals: propTypes.func.isRequired,
   tableNumber: propTypes.number.isRequired,
-  meal: propTypes.isRequired,
+  prevMeals: propTypes.arrayOf(Object).isRequired,
 };
