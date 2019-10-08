@@ -1,0 +1,1 @@
+exports.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZU51bWJlciI6MSwiaWF0IjoxNTcwNDMxODk0fQ.hJ9P5tRAg-bP12Kxl33Ym5cpNIVZZg103jbZlL8_yLg';

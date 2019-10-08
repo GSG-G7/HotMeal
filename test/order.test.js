@@ -1,11 +1,12 @@
 const test = require('tape');
 const supertest = require('supertest');
 const app = require('../server/app.js');
+const { token } = require('./cookie.test');
 
 test('test success for /order', (t) => {
   supertest(app)
     .post('/api/v1/order')
-    .set('Cookie', ['hotmeal_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZU51bWJlciI6MSwiaWF0IjoxNTY5Mzk2ODEyfQ.-Rb_346P1wnl0VHCmmf7zGXaBrfwMlxktFNUEt4l_kk'])
+    .set('Cookie', [`hotmeal_token=${token}`])
     .send({
       createdAt: '1569396246734',
       totalPrice: 44.05,
