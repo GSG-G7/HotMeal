@@ -1,10 +1,10 @@
-[![Build Status](https://api.travis-ci.com/GSG-G7/HOTMEAL.png?branch=master)](https://api.travis-ci.com/GSG-G7/HOTMEAL)
+
+![Build Status](https://api.travis-ci.com/Asmaathabet/HotMeal.png?branch=master)
 
 # HotMeal
 
-## Solution
-
-Our app is designed to let the users order their meals, edit them as they desire without needing of calling waiters. Moreover, they can send their feedback through the app.
+## **Project Aim**
+Our app is designed to let the users order their meals,edit them as they desire without needing to call waiters. Moreover, they can send their feedback through the app.
 
 
 
