@@ -59,3 +59,5 @@ There is not a real Satisfaction for the resturants' customers about the restura
 ### **Prototype**
 
 [View Prototype](https://www.figma.com/proto/wNnEm89q827FnGPdOaJKK8/HotMeal?node-id=7%3A1&scaling=scale-down)
+
+![Screenshot from 2019-10-08 15-17-04](https://user-images.githubusercontent.com/29041512/66395190-7a479080-e9df-11e9-821b-962682f20071.png)
