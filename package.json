@@ -9,7 +9,7 @@
     "lint": "eslint server/",
     "start": "NODE_ENV=production node server/index.js",
     "dev": "NODE_ENV=development nodemon server/index.js",
-    "build:db": "NODE_ENV=test node server/database/config/build",
+    "build:db": "NODE_ENV=testing node server/database/config/build",
     "build:static": "NODE_ENV=testing node server/database/config/insertStatic"
   },
   "repository": {
