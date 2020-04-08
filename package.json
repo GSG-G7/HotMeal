@@ -6,6 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test tape test/ | tap-spec",
     "lint:react": "cd client/ && npm run lint",
+    "build:client": "cd client/ && npm run build",
     "lint": "eslint server/",
     "start": "NODE_ENV=dev node server/",
     "dev": "NODE_ENV=dev nodemon server/",
